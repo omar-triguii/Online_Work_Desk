@@ -13,6 +13,17 @@ public class Application {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "applicationOwner")
     private UserEntity applicationOwner;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "JobApplication")
+    private Job job;
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
 
     public Long getApplicationId() {
         return applicationId;
@@ -29,7 +40,7 @@ public class Application {
     public void setDescription(String description) {
         Description = description;
     }
-@JsonIgnore
+//@JsonIgnore
     public UserEntity getApplicationOwner() {
         return applicationOwner;
     }

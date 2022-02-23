@@ -3,6 +3,7 @@ package com.example.spring_online_work_project.service;
 import com.example.spring_online_work_project.entities.Application;
 import com.example.spring_online_work_project.entities.Job;
 import com.example.spring_online_work_project.repositories.ApplicationRepo;
+import com.example.spring_online_work_project.repositories.JobRepo;
 import com.example.spring_online_work_project.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,16 @@ public class ApplicationService {
     }
     @Autowired
     private UserRepo userRepo;
-    public Application createApplicationByUser(Long userId,Application application){
+    @Autowired
+    private JobRepo jobRepo;
+    public Application createApplicationByUser(Long userId,Long jobId,Application application){
         application.setApplicationOwner(this.userRepo.getById(userId));
+        application.setJob(this.jobRepo.getById(jobId));
         return this.applicationRepo.save(application);
 
+    }
+
+    public List<Application> getall() {
+        return this.applicationRepo.findAll();
     }
 }

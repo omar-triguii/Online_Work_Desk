@@ -59,7 +59,7 @@ public class UserEntity {
     public void setJobsPosted(Set<Job> jobsPosted) {
         this.jobsPosted = jobsPosted;
     }
-
+@JsonIgnore
     public Set<Application> getJobsTaken() {
         return jobsTaken;
     }

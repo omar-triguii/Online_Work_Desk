@@ -56,7 +56,8 @@ public class JobService {
     @Autowired
     private UserRepo userRepo;
     public void addJobRequest(MultipartFile jobImageUrl, String Description, int Price,
-                              int estimatedDuration, String Industry, Status Status,String Title,Long userId) throws IOException {
+                              int estimatedDuration, String Industry, Status Status,
+                              String Title,Long userId) throws IOException {
         UserEntity user=this.userRepo.getById(userId);
         Job jobRequest = new Job();
         jobRequest.setJobImageUrl(compressImage(jobImageUrl.getBytes()));
@@ -81,6 +82,9 @@ public class JobService {
         }
         return result;
     }
+//Methode to approve the job for someone
+
+
 
     private byte[] decompressImage(byte[] data)
     {

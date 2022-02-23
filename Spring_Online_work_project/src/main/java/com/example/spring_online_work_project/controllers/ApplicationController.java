@@ -12,13 +12,20 @@ import java.util.List;
 public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
+    //user posted a job request
     @GetMapping("/{userid}/allapplications")
     public List<Application> viewApplicationsPostedOfEachUser(@PathVariable Long userid){
         return this.applicationService.viewApplicationsOfEachUserPosted(userid);
     }
-    @PostMapping("/{userid}/addapplication")
+    //user with userid apply for job with jobid
+    @PostMapping("/{userid}/{jobid}/addapplication")
     public Application createApplicationByUser(@PathVariable Long userid,
+                                               @PathVariable Long jobid,
                                                @RequestBody Application application){
-        return this.applicationService.createApplicationByUser(userid,application);
+        return this.applicationService.createApplicationByUser(userid,jobid,application);
+    }
+    @GetMapping("getallapp")
+    public List<Application> getallapplications(){
+        return this.applicationService.getall();
     }
 }

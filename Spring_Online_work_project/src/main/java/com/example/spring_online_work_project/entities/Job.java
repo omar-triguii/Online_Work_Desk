@@ -2,10 +2,13 @@ package com.example.spring_online_work_project.entities;
 
 import com.example.spring_online_work_project.enumeration.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Entity
 public class Job {
@@ -23,6 +26,9 @@ public class Job {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner")
     private UserEntity owner;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(mappedBy = "job",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Application> applications = new HashSet<Application>();//jobs that he push them to the net
 
     public Long getJobId() {
         return jobId;
