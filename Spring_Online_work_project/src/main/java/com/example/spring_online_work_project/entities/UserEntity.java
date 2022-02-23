@@ -41,10 +41,10 @@ public class UserEntity {
     private Gender gender;
 
     @OneToMany(mappedBy = "owner",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Job> jobsTaken = new HashSet<Job>();
+    private Set<Job> jobsPosted = new HashSet<Job>();//jobs that he push them to the net
 
     @OneToMany(mappedBy = "applicationOwner",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Application> jobsPosted = new HashSet<Application>();
+    private Set<Application> jobsTaken = new HashSet<Application>();
 
     //@OneToMany(mappedBy = "ownerPosted",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
  //   private Set<Job> jobsPosted = new HashSet<Job>();
@@ -52,19 +52,19 @@ public class UserEntity {
     //private byte[] urlcv;
 
 
-    public Set<Application> getJobsPosted() {
+    public Set<Job> getJobsPosted() {
         return jobsPosted;
     }
 
-    public void setJobsPosted(Set<Application> jobsPosted) {
+    public void setJobsPosted(Set<Job> jobsPosted) {
         this.jobsPosted = jobsPosted;
     }
 
-    public Set<Job> getJobsTaken() {
+    public Set<Application> getJobsTaken() {
         return jobsTaken;
     }
 
-    public void setJobsTaken(Set<Job> jobsTaken) {
+    public void setJobsTaken(Set<Application> jobsTaken) {
         this.jobsTaken = jobsTaken;
     }
 
