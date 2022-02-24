@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(){
+    
+  }
   title = 'khadamni';
+  ngAfterViewChecked() {
+    window.scrollTo(0, 0);
+    }
 }
