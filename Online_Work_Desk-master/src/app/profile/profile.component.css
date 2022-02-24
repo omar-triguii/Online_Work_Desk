@@ -1,0 +1,75 @@
+body {
+    background: rgb(120, 39, 73)
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #680c08
+}
+
+.profile-button {
+    background: rgb(120, 39, 63);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #680c0d
+}
+
+.profile-button:focus {
+    background: #680c0d;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #680c0d;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #680c0d;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #680c08;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #680c08
+}
+
+
+/*checkBox Radio*/
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #680c0d;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}

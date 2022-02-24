@@ -1,0 +1,50 @@
+<!--nav-->
+<nav class="navbar navbar-expand-sm   fixed-top ">
+    <div class="container-fluid ">
+        <a class="navbar-brand fluid" href="javascript:void(0)" routerLink="/home"><img class="logo" src="../../assets/whitelogo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse " id="mynavbar">
+
+            <div *ngIf="!userLogin" class="navbar-nav navbar-right   ">
+
+                <button class="btn btn-submit btnsignup" routerLink="/signUp">Sign UP</button>
+                <button class="btn btn-submit btnsignin" routerLink="/login">Sign In</button>
+            </div>
+
+
+
+            <ul *ngIf="userLogin" class="navbar-nav me-auto ">
+                <li class="nav-item">
+                    <a class="nav-link page" href="javascript:void(0)" routerLink="/FindJob"><img class="icon" src="../../assets/job.png" type="icon" alt=""> FIND JOB</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link page" href="javascript:void(0)" routerLink="postJob"> <img class="icon" src="../../assets/resume.png" type="icon" alt=""> Post Job</a>
+                </li>
+
+
+            </ul>
+
+            <form class="d-flex">
+
+
+                <div *ngIf="userLogin" class="dropdown">
+                    <button class="btn dropdown-toggle shadow-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="../../assets/user.png"  class="iconProfile"alt="">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" routerLink="/profile">My profile</a></li>
+                        <li><a class="dropdown-item" routerLink="/profile">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    </ul>
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+</nav>
