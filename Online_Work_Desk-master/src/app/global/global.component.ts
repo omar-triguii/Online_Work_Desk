@@ -1,3 +1,3 @@
-export class globalComponenet{
-  public static userLogin : boolean=true;
+export class globalComponenet {
+  public static userLogin: boolean = true;
 }

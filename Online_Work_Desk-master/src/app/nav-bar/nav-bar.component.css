@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 .logo {
     height: 50px;
 }
@@ -41,11 +41,31 @@ li:hover {
 
 nav .page {
     color: #fff;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 nav {
     background-color: black;
     opacity: 0.9;
-    ;
+}
+
+#signUp {
+    color: #680c0d;
+    background-color: white;
+}
+
+#signUp:hover {
+    color: crimson;
+    opacity: 0.8;
+    background-color: rgb(180, 173, 168);
+}
+
+#signIn:hover {
+    background-color: crimson;
+    color: white;
+    opacity: 0.8;
+}
+
+.btn {
+    color: white;
 }
