@@ -1,36 +1,34 @@
 <div class="carousel-inner embed-responsive">
-    <div class=" carousel-item active ">
-        <video class="image-fluid vd w-100 " autoplay preload loop muted src="../../assets/Putting stuff in a backpack.mp4"></video>
+    <div class="carousel-item active">
+        <video class="image-fluid vd w-100" autoplay preload loop muted src="../../assets/Putting stuff in a backpack.mp4"></video>
     </div>
 </div>
 
-
-
-
-
-
-<div class="container mt-5 pt-5 mb-5 pb-5 ">
+<div class="container mt-5 pt-5 mb-5 pb-5">
     <div class="row mt-5 pt-5 mb-5 pb-5">
         <div class="col-6">
-            <div class="mb-3 pb-3 ">
+            <div class="mb-3 pb-3">
                 <h1>What is <span>KHADAMNI?</span></h1>
             </div>
             <div class="container">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea corrupti delectus quo illo doloremque ipsum, distinctio ad adipisci atque explicabo inventore amet rerum fuga omnis eveniet quis sequi iusto aperiam ducimus? Aut commodi error
-                    cum numquam quo debitis minus hic ad sed consequatur nesciunt rerum, dolores obcaecati maxime eaque exercitationem?</p>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea corrupti delectus quo illo doloremque ipsum, distinctio ad adipisci atque explicabo inventore amet rerum fuga omnis eveniet quis sequi iusto aperiam ducimus? Aut commodi error cum numquam quo
+                    debitis minus hic ad sed consequatur nesciunt rerum, dolores obcaecati maxime eaque exercitationem?
+                </p>
 
-
-                <div class="container mt-5 ">
-                    <button class="btn shadow-none classmr" routerLink="/signUp">Get Started</button>
-                    <button class="btn shadow-none classml" routerLink="/login">Login</button>
+                <div *ngIf="!userLogin" class="container mt-5">
+                    <button class="btn shadow-none classmr" routerLink="/signUp">
+            Get Started
+          </button>
+                    <button class="btn shadow-none classml" routerLink="/login">
+            Login
+          </button>
                 </div>
             </div>
-
-
-
-
         </div>
-        <div class="col-6"><img class="imageLogo" src="../../assets/blacklogo.png" alt=""></div>
+        <div class="col-6">
+            <img class="imageLogo" src="../../assets/blacklogo.png" alt="" />
+        </div>
     </div>
 </div>
 <!--slide
@@ -44,21 +42,21 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../assets/work1.jpg" class=" d-block w-100" alt="...">
+            <img src="../assets/work1.jpg" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-            <img src="../assets/work2.jpg" class="d-block w-100" alt="...">
+            <img src="../assets/work2.jpg" class="d-block w-100" alt="..." />
         </div>
         <div class="carousel-item">
-            <img src="../assets/work3.jpg" class="d-block w-100" alt="...">
+            <img src="../assets/work3.jpg" class="d-block w-100" alt="..." />
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
