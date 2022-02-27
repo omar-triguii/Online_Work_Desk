@@ -1,34 +1,46 @@
-    .classml {
-        margin-left: 2%
-    }
-    
-    .classmr {
-        margin-right: 2%;
-    }
-    
-    p {
-        text-align: justify;
-    }
-    
-    .imageLogo {
-        margin-left: 25%;
-    }
-    
-    .btn {
-        border-radius: 5px;
-        border: 1px solid;
-        background-color: #680c0d;
-        color: white;
-        height: 50px;
-        width: 150px;
-    }
-    
-    .btn:hover {
-        background-color: crimson;
-        color: whitesmoke;
-    }
-    
-    span {
-        font-weight: bold;
-        color: #680c0d;
-    }
+.classml {
+    margin-left: 2%;
+}
+
+.classmr {
+    margin-right: 2%;
+}
+
+.topVideo {
+    border-radius: 20px;
+    background-color: black;
+    opacity: 0.8;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 24%;
+    left: 29%;
+    color: white;
+}
+
+p {
+    text-align: justify;
+}
+
+.imageLogo {
+    margin-left: 25%;
+}
+
+.btn {
+    border-radius: 5px;
+    border: 1px solid;
+    background-color: #680c0d;
+    color: white;
+    height: 50px;
+    width: 150px;
+}
+
+.btn:hover {
+    background-color: crimson;
+    color: whitesmoke;
+}
+
+span {
+    font-weight: bold;
+    color: #680c0d;
+}
