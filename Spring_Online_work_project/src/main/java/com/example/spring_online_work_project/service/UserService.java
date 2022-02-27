@@ -28,11 +28,10 @@ public class UserService {
 
     @Autowired
     private UserRepo userRepo;
+
     public UserEntity findByEmail(String email){
         return this.userRepo.findByEmail(email);
     }
-
-
     public UserEntity saveUser(UserEntity userEntity) {
         //RoleEntity userRole = roleEntityRepository.findByName("ROLE_USER");
         //userEntity.setRoleEntity(userRole);
@@ -54,6 +53,26 @@ public class UserService {
             }
         }
         return null;
+    }
+    public UserEntity omar(String email){
+        List<UserEntity> users=this.userRepo.findAll();
+        for (int i=0;i<users.size();i++){
+            if (users.get(i).getEmail().equals(email)){
+                return users.get(i);
+            }
+        }
+       return null;
+
+    }
+    public String trigui(String email){
+        List<UserEntity> users=this.userRepo.findAll();
+        for (int i=0;i<users.size();i++){
+            if (users.get(i).getEmail().equals(email)){
+                return users.get(i).getFirstName() +"  "+ users.get(i).getLastName();
+            }
+        }
+        return "";
+
     }
 
     public List<UserDto> getAllUsers() {
@@ -149,7 +168,6 @@ public class UserService {
         }
         return outputStream.toByteArray();
     }
-
 
 
 

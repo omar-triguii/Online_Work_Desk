@@ -28,4 +28,11 @@ public class ApplicationController {
     public List<Application> getallapplications(){
         return this.applicationService.getall();
     }
+    //each user see the applications by other users to its request
+    @GetMapping("/{userId}/seeapplicationsbyotheruser")
+    public List<Application> seeapplicationsbyotheruser(@PathVariable Long userId){
+        return this.applicationService.seeapplicationsbyotheruser(userId);
+    }
+    //user confirms an application
+
 }

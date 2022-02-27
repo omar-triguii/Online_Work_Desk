@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.text.ParseException;
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("user")
 public class userController {
@@ -52,6 +52,16 @@ public class userController {
     }
 
 
+    @GetMapping("/omar/{email}")
+    public UserEntity getByEmail(@PathVariable(name = "email") String email){
+        return this.userService.omar(email);
 
+    }
+
+    @GetMapping("/trigui/{email}")
+    public String getname(@PathVariable(name = "email") String email){
+        return this.userService.trigui(email);
+
+    }
 
 }

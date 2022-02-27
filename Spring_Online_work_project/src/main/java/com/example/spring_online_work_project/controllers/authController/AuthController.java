@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("user")
 public class AuthController {
     @Autowired
     private UserService userService;
@@ -25,10 +26,10 @@ public class AuthController {
     //@Autowired
     //private RoleRepository roleRepository;
     @PostMapping("/register")
-    public String registerUser(@RequestBody  RegistrationRequest registrationRequest) {
+    public UserEntity registerUser(@RequestBody  RegistrationRequest registrationRequest) {
         UserEntity u = new UserEntity();
         if (userService.findByEmail(registrationRequest.getEmail())!= null){
-            return "this username already in use";
+            return null;
         }
         else{
             u.setPassword(registrationRequest.getPassword());
@@ -43,7 +44,7 @@ public class AuthController {
             userService.saveUser(u);
             //}
 
-            return "OK";}
+            return u;}
     }
 
     @PostMapping("/auth")
