@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 //import javax.validation.Valid;
@@ -26,10 +27,10 @@ public class AuthController {
     //@Autowired
     //private RoleRepository roleRepository;
     @PostMapping("/register")
-    public String registerUser(@RequestBody  RegistrationRequest registrationRequest) {
+    public UserEntity registerUser(@RequestBody  RegistrationRequest registrationRequest) {
         UserEntity u = new UserEntity();
         if (userService.findByEmail(registrationRequest.getEmail())!= null){
-            return "this username already in use";
+            return null;
         }
         else{
             u.setPassword(registrationRequest.getPassword());
@@ -44,7 +45,7 @@ public class AuthController {
             userService.saveUser(u);
             //}
 
-            return "OK";}
+            return u;}
     }
 
     @PostMapping("/auth")

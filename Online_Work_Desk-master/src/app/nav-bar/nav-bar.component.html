@@ -1,12 +1,12 @@
 <!--nav-->
 <nav class="navbar navbar-expand-sm fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand fluid" href="javascript:void(0)" routerLink="/home"><img class="logo" src="../../assets/whitelogo.png" alt="" /></a>
+    <div class="container">
+        <a class="navbar-brand" href="javascript:void(0)" routerLink="/home"><img class="logo" src="../../assets/whitelogo.png" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
         <div class="collapse navbar-collapse" id="mynavbar">
-            <div *ngIf="!userLogin" class="navbar-nav navbar-right">
+            <div *ngIf="!islogedin" class="navbar-nav navbar-right">
                 <button class="btn btn-submit btnsignup shadow-none" id="signUp" routerLink="/signUp">
           Sign UP
         </button>
@@ -15,19 +15,25 @@
         </button>
             </div>
 
-            <ul *ngIf="userLogin" class="navbar-nav me-auto">
+            <ul *ngIf="islogedin" class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link page" href="javascript:void(0)" routerLink="/FindJob"><img class="icon" src="../../assets/job.png" type="icon" alt="" /> FIND JOB</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link page" href="javascript:void(0)" routerLink="postJob">
-                        <img class="icon" src="../../assets/resume.png" type="icon" alt="" /> Post Job</a>
+                    <a class="nav-link page" href="javascript:void(0)" routerLink="/postJob">
+                        <img class="icon" src="../../assets/resume.png" type="icon" alt="" /> POST JOB</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page" href="javascript:void(0)" routerLink="/findUser">
+                        <img class="icon" src="../../assets/find-my-friend.png" type="icon" alt="" /> FIND USER</a>
                 </li>
             </ul>
 
             <form class="d-flex">
-                <div *ngIf="userLogin" class="dropdown">
+                <h1 style="font-size: 30px; display: inline;padding-top: 10px;color: tomato;">{{dataReceived}}</h1>
+                <div *ngIf="islogedin" class="dropdown">
+                    
                     <button class="btn dropdown-toggle shadow-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="../../assets/user.png" class="iconProfile" alt="" />
           </button>
@@ -37,7 +43,7 @@
                             <a class="dropdown-item" routerLink="/profile">My profile</a>
                         </li>
                         <li><a class="dropdown-item" routerLink="/profile">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        <li><button class="dropdown-item" (click)="logout()">Log Out</button></li>
                     </ul>
                 </div>
             </form>

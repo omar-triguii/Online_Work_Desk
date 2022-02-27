@@ -26,7 +26,9 @@ export class LoginInterfaceComponent implements OnInit {
         this.IsLoggedIn=true
       console.log(this.dataReceived)
       console.log(this.aus.loggedIn())
-      this.route.navigate(['home'])
+      this.route.navigate(['homelogined']) .then(() => {
+        window.location.reload();
+      });
       }
       ,err=>console.log(err))
     

@@ -10,25 +10,25 @@ const AUTH_API = 'http://localhost:8087/user';
 export class AuthServiceService {
   helper = new JwtHelperService
   constructor(private http: HttpClient) { }
-  /*
-  register(email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'register', {
-      email,
-      password
-    }, );
-  }*/
 
-  login(body: any) {
-    return this.http.post('http://localhost:8087/user/auth', body)
+  register(body:any): Observable<any> {
+    return this.http.post('http://localhost:8087/user/register',body);
   }
 
-  /*
-   getadmin(email:String){
+  login(body:any){
+    return this.http.post('http://localhost:8087/user/auth',body)
+  }
+  getuserbyemail(email:string){
+    return this.http.get(`http://localhost:8087/user/omar/${email}`)
+  }
+  getusernamebyemail(email:string){
+    return this.http.get(`http://localhost:8087/user/trigui/${email}`,{responseType: 'text'})
+  }
+ /*
+  getadmin(email:String){
 
-     return this.http.get(`http://localhost:8081/getadmin/${email}`)
-   }*/
-
-  saveDataProfil(token: any) {
+    return this.http.get(`http://localhost:8081/getadmin/${email}`)
+  }*/
 
     //  let decodeToken= this.helper.decodeToken(token)
 
@@ -49,8 +49,9 @@ export class AuthServiceService {
     if (this.helper.isTokenExpired(token)) {
       return false
     }
-    return true
-  }
+    logout() :Observable<any>{
+      return this.http.get('http://localhost:8087/user/logout',{responseType: 'text'})
+    }
 }
 
 

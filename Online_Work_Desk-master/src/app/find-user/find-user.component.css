@@ -452,3 +452,7 @@ input[type="date"]:placeholder {
 #icon {
     width: 60%;
 }
+
+.badge {
+    background-color: black;
+}
