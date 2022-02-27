@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FindJobComponent } from './find-job/find-job.component';
 
 import { HomePageComponent } from './home-page/home-page.component';
+import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
 import { LoginInterfaceComponent } from './login-interface/login-interface.component';
 import { PostJobComponent } from './post-job/post-job.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -11,6 +12,7 @@ import { WrongRouteComponentComponent } from './wrong-route-component/wrong-rout
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
+  {path: 'homelogined', component: HomeafterloginComponent },
   { path: 'login', component: LoginInterfaceComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'postJob', component: PostJobComponent },

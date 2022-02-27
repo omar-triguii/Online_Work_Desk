@@ -10,18 +10,20 @@ const AUTH_API = 'http://localhost:8087/user';
 export class AuthServiceService {
   helper= new JwtHelperService
   constructor(private http: HttpClient) { }
-  /*
-  register(email: string, password: string): Observable<any> {
-    return this.http.post(AUTH_API + 'register', {
-      email,
-      password
-    }, );
-  }*/
+  
+  register(body:any): Observable<any> {
+    return this.http.post('http://localhost:8087/user/register',body);
+  }
   
   login(body:any){
     return this.http.post('http://localhost:8087/user/auth',body)
   }
-
+  getuserbyemail(email:string){
+    return this.http.get(`http://localhost:8087/user/omar/${email}`)
+  }
+  getusernamebyemail(email:string){
+    return this.http.get(`http://localhost:8087/user/trigui/${email}`,{responseType: 'text'})
+  }
  /*
   getadmin(email:String){
     
@@ -50,6 +52,9 @@ export class AuthServiceService {
         return false
       }
       return true
+    }
+    logout() :Observable<any>{
+      return this.http.get('http://localhost:8087/user/logout',{responseType: 'text'})
     }
 }
 

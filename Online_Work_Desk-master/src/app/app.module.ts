@@ -14,6 +14,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { WrongRouteComponentComponent } from './wrong-route-component/wrong-route-component.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
 
 
 
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     FindJobComponent,
     SignUpComponent,
     WrongRouteComponentComponent,
+    HomeafterloginComponent,
     
     
     
