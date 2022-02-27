@@ -1,8 +1,3 @@
-<!--another-->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 <div class="container">
     <div class="wrapper fadeInDown mt-5 pt-5">
         <div id="formContent">
@@ -13,43 +8,39 @@
                 <img src="../../assets/blacklogo.png" id="icon" />
             </div>
 
-            <!-- Login Form -->
+            <!-- JOb post Form -->
             <form>
-                <input type="text" id="title" class="fadeIn second" name="title" placeholder="Job Title" required>
-                <input type="text" id="industry" class="fadeIn second" name="industry" placeholder="Industry" required>
-                <input type="date" id="startDate" class="fadeIn third" name="startDate" placeholder="Start Date" required>
-                <input type="text" id="estimatedDuration" class="fadeIn third" name="estimatedDuration" placeholder="Estimated Duration" required>
-                <input type="number" id="price" class="fadeIn fourth" name="price" placeholder="Price" required>
-                <input type="text" id="description" class="fadeIn fourth" name="description" placeholder="Description">
-                <input type="text" id="imageUrl" class="fadeIn fourth" name="imageUrl" placeholder="Image Url">
+                <input type="text" id="title" class="fadeIn second" name="title" placeholder="Job Title" required />
+                <input type="text" id="industry" class="fadeIn second" name="industry" placeholder="Industry" required />
+                <input type="date" id="startDate" class="fadeIn third" name="startDate" placeholder="Start Date" required />
+                <input type="text" id="estimatedDuration" class="fadeIn third" name="estimatedDuration" placeholder="Estimated Duration" required />
+                <input type="number" id="price" class="fadeIn fourth" name="price" placeholder="Price" required />
+                <input type="text" id="description" class="fadeIn fourth" name="description" placeholder="Description" />
+                <input type="text" id="imageUrl" class="fadeIn fourth" name="imageUrl" placeholder="Image Url" />
 
                 <div class="position-relative">
-                    <input type="text" id="requiredSkills" class="fadeIn fourth" name="requiredSkills" placeholder="Required Skills" #requiredSkill>
-                    <button class=" add" (click)="addTorequiredSkills(requiredSkill.value)"><img class="addbtn " src="../../assets/add.png" alt=""></button>
-
+                    <input type="text" id="requiredSkills" class="fadeIn fourth" name="requiredSkills" placeholder="Required Skills" #requiredSkill />
+                    <button class="add" (click)="addTorequiredSkills(requiredSkill.value)">
+            <img class="addbtn" src="../../assets/add.png" alt="" />
+          </button>
                 </div>
 
                 <div class="container">
                     <div class="row justify-content-center" *ngFor="let skill of requiredSkills">
-                        <div class="skill m-2 p-2 position-relative">{{skill}}
-                            <button class="remove" (click)="removefromRequiredSkills(skill)"><img class="addbtn " src="../../assets/cancel.png " alt=" "></button>
+                        <div class="skill m-2 p-2 position-relative">
+                            {{ skill }}
+                            <button class="remove" (click)="removefromRequiredSkills(skill)">
+                <img class="addbtn" src="../../assets/cancel.png " alt=" " />
+              </button>
                         </div>
                     </div>
                 </div>
-
-
-
             </form>
 
-
-            <!-- Remind Passowrd -->
+            <!-- submit button -->
             <div id="formFooter ">
-                <input type="submit" class="fadeIn fourth " value="Post Job ">
-
-
-
+                <input type="submit" class="fadeIn fourth" value="Post Job " />
             </div>
-
         </div>
     </div>
 </div>
