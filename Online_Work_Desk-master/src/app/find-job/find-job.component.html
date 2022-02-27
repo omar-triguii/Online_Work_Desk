@@ -40,16 +40,19 @@
         </div>
     </div>
 
-    <!--job card-->
-
-    <div class="card" style="width: 18rem">
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top" alt="Card image cap " />
-        <div class="card-body">
-            <h5 class="card-title">Title</h5>
-            <h4 class="card-title">Industry</h4>
-            <p class="card-text">PRICE $</p>
-            <div id="formFooter ">
-                <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Detail " />
+    <!--job card group-->
+    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5">
+        <div *ngFor="let job of jobs" class="col">
+            <div class="card h-100" style="width: 18rem">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top" alt="Card image cap " />
+                <div class="card-body">
+                    <h5 class="card-title">Title</h5>
+                    <h4 class="card-title">Industry</h4>
+                    <p class="card-text">PRICE $</p>
+                    <div id="formFooter ">
+                        <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Detail " />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -74,18 +77,29 @@
                             <p class="card-text">Estimated Duration</p>
                             <p class="card-text">
                                 <!--ngFor-->
-                                <span class="badge badge-pill badge-secondary">Required Skills1
-                </span>
-                            </p>
+                                <span class="badge badge-pill badge-secondary">Required Skills1</span
+                >
+              </p>
 
-                            <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Contact" />
-                        </div>
-                    </div>
-                </div>
-                <div id="formFooter">
-                    <input type="button" class="fourth" data-bs-toggle="modal" value="Close" />
-                </div>
+              <input
+                type="button"
+                class="fourth"
+                data-bs-toggle="modal"
+                href="#exampleModalToggle"
+                value="Contact"
+              />
             </div>
+          </div>
         </div>
+        <div id="formFooter">
+          <input
+            type="button"
+            class="fourth"
+            data-bs-toggle="modal"
+            value="Close"
+          />
+        </div>
+      </div>
     </div>
+  </div>
 </div>
