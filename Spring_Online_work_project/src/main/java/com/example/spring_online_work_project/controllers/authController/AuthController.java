@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("user")
 public class AuthController {
     @Autowired
     private UserService userService;
