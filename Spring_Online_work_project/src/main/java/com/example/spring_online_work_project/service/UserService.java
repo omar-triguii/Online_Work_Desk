@@ -168,6 +168,9 @@ public class UserService {
         }
         return outputStream.toByteArray();
     }
+    public UserEntity getUserById(Long userId) {
+        return userRepo.getById(userId);
+    }
 
 
 

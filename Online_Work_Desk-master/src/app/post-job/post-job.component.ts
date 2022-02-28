@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import { Job } from '../models/job.model';
 import { User } from '../models/user.model';
@@ -13,7 +14,7 @@ export class PostJobComponent implements OnInit {
 
   userId?: number = 1;
 
-  constructor(private jobService: JobService, private authService: AuthServiceService) { }
+  constructor(private jobService: JobService, private authService: AuthServiceService, private route: Router) { }
 
   ngOnInit(): void {
 
@@ -74,7 +75,7 @@ export class PostJobComponent implements OnInit {
       next: (user: User) => {
         job.owner = user;
         this.jobService.addJob(user, job).subscribe({
-          next: (response) => console.log(response),
+          next: (response) => this.route.navigate(['/findmyjobs']),
           error: (err) => console.log(err)
         });
       },

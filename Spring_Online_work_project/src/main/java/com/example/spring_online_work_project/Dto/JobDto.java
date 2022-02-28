@@ -1,5 +1,6 @@
 package com.example.spring_online_work_project.Dto;
 
+import com.example.spring_online_work_project.entities.UserEntity;
 import com.example.spring_online_work_project.enumeration.Status;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,4 +19,5 @@ public class JobDto {
     private Status status;
     private String industry;
     private String jobImageUrl;
+    private UserEntity owner;
 }

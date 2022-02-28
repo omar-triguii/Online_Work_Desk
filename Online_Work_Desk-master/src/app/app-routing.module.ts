@@ -17,7 +17,7 @@ import { WrongRouteComponentComponent } from './wrong-route-component/wrong-rout
 
 const routes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'viewsingleapplication', component: ViewsingleapplicationComponent },
+  { path: 'viewsingleapplication/:jobId', component: ViewapplicationsforeachjobComponent },
   { path: 'findmyjobs', component: JobsPerUserComponent },
   { path: 'viewapp', component: ViewapplicationsforeachjobComponent },
   {path: 'homelogined', component: HomeafterloginComponent },

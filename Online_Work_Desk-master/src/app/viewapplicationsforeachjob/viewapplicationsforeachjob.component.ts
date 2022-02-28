@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Application } from '../application.model';
 import { InterService } from '../inter.service';
 import { JobsPerUserComponent } from '../jobs-per-user/jobs-per-user.component';
@@ -12,29 +13,20 @@ import { JobService } from '../services/job.service';
 })
 export class ViewapplicationsforeachjobComponent implements OnInit {
   allApplications: Application[] = [];
-  dataReceived: any;
-  email: any;
-  x: any;
-  jobsPosted: Job[] = []; //list of job posted by user
-  w: any;
+  jobId?: number;
   constructor(
     private jobService: JobService,
-    private xx: JobsPerUserComponent,
-    private interservice: InterService
-  ) {}
+    private route: ActivatedRoute
+  ) {
+    this.jobId = +(this.route.snapshot.paramMap.get('jobId') ?? 0);
+    console.log(this.jobId);
+  }
 
   ngOnInit(): void {
-    //this.w=this.xx.w
-    this.jobService.seeapplicationsforthisjob(1).subscribe({
+    this.jobService.seeapplicationsforthisjob(this.jobId ?? 1).subscribe({
       next: (applications: Application[]) => {
-        this.allApplications = applications;
-        console.log(this.w);
-        console.log('respklvznlkndonse');
-      },
-    });
-
-    this.interservice.on<Job[]>().subscribe((data: Job[]) => {
-      this.jobsPosted = data;
+        this.allApplications = applications
+      }
     });
   }
 }

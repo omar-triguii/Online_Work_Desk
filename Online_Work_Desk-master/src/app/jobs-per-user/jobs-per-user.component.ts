@@ -45,14 +45,6 @@ export class JobsPerUserComponent implements OnInit {
               console.log(jobs);
 
               this.allJobs = jobs;
-              this.allJobs.forEach((job) => {
-                this.allImages.push(
-                  this._sanitizer.bypassSecurityTrustResourceUrl(
-                    'data:image/png;base64,' + job.jobImageUrl
-                  )
-                );
-                console.log(this.allImages[this.allImages.length - 1]);
-              });
               //this.allJobs.forEach((job) => console.log(job.jobImageUrl));
             },
           });
@@ -62,11 +54,10 @@ export class JobsPerUserComponent implements OnInit {
       }
     );
   }
-  seeapplicationsforthisjob(x: number) {
+  seeapplicationsforthisjob(jobId: number) {
     this.jobService.seeapplicationsforthisjob(this.x).subscribe((response) => {
-      this.w = this.x;
+      this.route.navigate([`/viewsingleapplication/${jobId}`])
     });
-    this.send(x);
   }
   send(id: number) {
     this.jobService.getJobsPostedByUser(id).subscribe({

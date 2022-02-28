@@ -1,18 +1,28 @@
 <!--job card group-->
-<div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allApplications && allApplications.length">
+<div class="container row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allApplications && allApplications.length; else NoApplication">
     <div *ngFor="let job of allApplications; let indexOfelement = index" class="col">
         <div class="card h-100" style="width: 18rem">
-            <img src="../assets/jobimage.jpg" class="card-img-top" alt="Card image cap " />
             <div class="card-body">
-                <h5 class="card-title">{{ job.description }}</h5>
+                <h5 class="card-title">Description: {{ job.description }}</h5>
+                <h5 class="card-title">Name: {{ job.applicationOwner.firstName + job.applicationOwner.lastName }}</h5>
+                <h5 class="card-title">Phone Number:{{ job.applicationOwner.phoneNumber}}</h5>
+                <h5 class="card-title">Job Title: {{ job.job.title }}</h5>
+                <h5 class="card-title">Job Description{{ job.job.description }}</h5>
 
                 <!--p class="card-text">{{job.price}} $</p-->
                 <div id="formFooter ">
-                    <input type="button" class="fourth" routerLink="/viewsingleapplication" value="Detail " />
+                    <input type="button" class="fourth" routerLink="/FindJob" value="Confirm" />
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<h1>gklznlkenlkzeq,gml,vmlze,gmlvd</h1>
+<ng-template #NoApplication>
+
+  <div class="container text-center">
+    <h4>There are no application for this job yet, keep waiting, they will come :)</h4>
+  </div>
+
+</ng-template>
+

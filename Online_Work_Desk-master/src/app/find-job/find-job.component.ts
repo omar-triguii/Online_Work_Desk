@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Application } from '../application.model';
+import { AuthServiceService } from '../auth-service.service';
 import { Job } from '../models/job.model';
+import { User } from '../models/user.model';
 import { JobService } from '../services/job.service';
 
 @Component({
@@ -13,19 +16,63 @@ export class FindJobComponent implements OnInit {
   allJobs: Job[] = [];
   allImages: any[] = [];
   currJob: Job = <Job>{};
+  currUser: User = <User>{};
 
-  constructor(private jobService: JobService) { }
+  constructor(private jobService: JobService, private authService: AuthServiceService) { }
 
   ngOnInit(): void {
-    this.jobService.getAllJobs().subscribe({
-      next: (jobs) => {
-        this.allJobs = jobs.filter((job: Job) => job.status == 'Free');
-      }
+
+    this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
+      next: (user: User) => {
+        this.currUser = user;
+        this.jobService.getAllJobs().subscribe({
+          next: (jobs) => {
+            this.allJobs = jobs.filter((job: Job) => {
+              return job.status == 'Free' && job.owner.userId != this.currUser.userId
+            });
+          }
+        });
+      },
     });
   }
 
   seeJobDetails(job: Job) {
     this.currJob = job;
+  }
+
+  applyForJob() {
+
+    let app: Application = <Application>{};
+
+    this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
+      next: (user: User) => {
+        let id = user.userId;
+        app.description = 'Please accept me';
+        app.applicationOwner = user;
+        app.job = this.currJob;
+        this.jobService.createApplication(id, this.currJob.jobId, app).subscribe((response) => console.log(response));
+      }
+    });
+  }
+
+  searchJobs(key: string) {
+    console.log(key);
+    const results: Job[] = [];
+    for (const job of this.allJobs) {
+      if (
+        job.title.toLowerCase().indexOf(key.toLowerCase()) !== -1 ||
+        job.industry.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      )
+        results.push(job);
+    }
+    this.allJobs = results;
+    if (!key) {
+      this.jobService.getAllJobs().subscribe({
+        next: (jobs) => {
+          this.allJobs = jobs.filter((job: Job) => job.status == 'Free' && job.owner.userId != this.currUser.userId);
+        },
+      });
+    }
   }
 
   locationList: string[] = [

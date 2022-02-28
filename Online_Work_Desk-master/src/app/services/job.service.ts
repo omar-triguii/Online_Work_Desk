@@ -56,4 +56,9 @@ export class JobService {
   seeapplicationsforthisjob(jobId:number): Observable<Application[]> {
     return this.http.get<Application[]>(this.url + `${jobId}/getapplicationsbyjob`)
   }
+
+  createApplication(userId: number, jobId: number, application: Application) {
+    return this.http.post(this.url + `${userId}/${jobId}/addapplication`, application)
+      .pipe(catchError(this.processHttpMsgService.handleError));
+  }
 }
