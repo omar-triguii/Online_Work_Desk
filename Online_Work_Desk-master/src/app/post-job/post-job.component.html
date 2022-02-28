@@ -21,24 +21,7 @@
         <input type="file" id="jobImageUrl" class="fadeIn fourth" name="jobImageUrl" placeholder="Image"
           accept="image/*" (change)="onFileSelected($event)" #jobImageUrl="ngModel" ngModel/>
 
-        <div class="position-relative">
-          <input type="text" id="requiredSkills" class="fadeIn fourth" name="requiredSkills"
-            placeholder="Required Skills" #requiredSkill />
-          <button class="add" (click)="addTorequiredSkills(requiredSkill.value)">
-            <img class="addbtn" src="../../assets/add.png" alt="" />
-          </button>
-        </div>
 
-        <div class="container">
-          <div class="row justify-content-center" *ngFor="let skill of requiredSkills">
-            <div class="skill m-2 p-2 position-relative">
-              {{ skill }}
-              <button class="remove" (click)="removefromRequiredSkills(skill)">
-                <img class="addbtn" src="../../assets/cancel.png " alt=" " />
-              </button>
-            </div>
-          </div>
-        </div>
         <!-- submit button -->
         <div id="formFooter ">
           <input type="submit" class="fadeIn fourth" value="Post Job " />

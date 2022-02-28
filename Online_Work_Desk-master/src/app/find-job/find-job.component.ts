@@ -14,17 +14,12 @@ export class FindJobComponent implements OnInit {
   allImages: any[] = [];
   currJob: Job = <Job>{};
 
-  constructor(private jobService: JobService, private _sanitizer: DomSanitizer) { }
+  constructor(private jobService: JobService) { }
 
   ngOnInit(): void {
     this.jobService.getAllJobs().subscribe({
       next: (jobs) => {
         this.allJobs = jobs.filter((job: Job) => job.status == 'Free');
-        this.allJobs.forEach((job) => {
-          this.allImages.push(this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + job.jobImageUrl));
-          console.log(this.allImages[this.allImages.length-1]);
-        });
-        //this.allJobs.forEach((job) => console.log(job.jobImageUrl));
       }
     });
   }

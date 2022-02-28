@@ -69,9 +69,7 @@ export class PostJobComponent implements OnInit {
     job.price = data.price;
     job.applications = [];
     job.industry = data.industry;
-    job.requiredSkills = this.requiredSkills;
     job.startDate = data.startDate;
-    console.log(job)
     this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
       next: (user: User) => {
         this.jobService.addJob(user.userId, job).subscribe({
@@ -82,17 +80,6 @@ export class PostJobComponent implements OnInit {
       error: (error) => console.log(error)
     });
 
-    /* let data = f.value;
-    console.log(data);
-    this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
-      next: (user: User) => {
-        this.userId = parseInt(user.userId);
-        this.jobService.addJob(this.userId, data).subscribe({
-          next: (job) => console.log(job),
-          error: (err) => console.log(err)
-        });
-      }
-    }) */
   }
 
 }

@@ -24,8 +24,8 @@ export class LoginInterfaceComponent implements OnInit {
       this.dataReceived = response
       this.aus.saveDataProfil(this.dataReceived.token)
       this.IsLoggedIn = true
-      console.log(this.dataReceived)
-      console.log(this.aus.loggedIn())
+      //console.log(this.dataReceived)
+      //console.log(this.aus.loggedIn())
       this.route.navigate(['home']).then(() => {
         window.location.reload();
       });

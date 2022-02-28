@@ -17,7 +17,7 @@ export class NavBarComponent implements OnInit {
   constructor(private asd: AuthServiceService, private router: Router) {
 
     this.islogedin = this.asd.loggedIn()
-    console.log(this.islogedin)
+    //console.log(this.islogedin)
     //this.userLogin()
     if (this.islogedin == false) {
       this.email = null
@@ -26,11 +26,11 @@ export class NavBarComponent implements OnInit {
       this.email = this.asd.getEmail()
       // this.asd.getadmin(this.username).subscribe(data =>
       //this.user=data
-      console.log(this.email)
+      //console.log(this.email)
       this.asd.getusernamebyemail(this.email).subscribe({
         next: (response) => {
           this.dataReceived = response
-          console.log(this.dataReceived)
+          //console.log(this.dataReceived)
         }, error: (err: HttpErrorResponse) => {
           console.log(err)
         }
@@ -38,15 +38,6 @@ export class NavBarComponent implements OnInit {
     }
 
   }
-  /*userLogin(){
-    console.log(this.islogedin+"zebi")
-    if (this.islogedin==true){
-    return true}
-    else{
-      return false
-    }
-  }*/
-  //userLogin=globalComponenet.userLogin;
   ngOnInit(): void {
   }
   logout() {

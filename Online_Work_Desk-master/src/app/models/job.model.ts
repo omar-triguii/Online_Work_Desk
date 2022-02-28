@@ -11,7 +11,6 @@ export interface Job {
   industry: string,
   jobImageUrl: string,
   owner: number,
-  applications?: any[],
-  requiredSkills?: string[]
+  applications?: any[]
 
 }

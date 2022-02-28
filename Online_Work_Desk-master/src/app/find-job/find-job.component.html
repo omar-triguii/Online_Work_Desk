@@ -69,19 +69,15 @@
         </div>
         <div class="modal-body wrapper">
           <div class="card" style="width: 18rem">
-            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top"
+            <img [src]="currJob.jobImageUrl" class="card-img-top"
               alt="... " />
             <div class="card-body">
               <h5 class="card-title">{{currJob.title}}</h5>
               <h4 class="card-title">{{currJob.industry}}</h4>
               <p class="card-text">{{currJob.price}} $</p>
               <p class="card-text">{{currJob.description}} </p>
-              <p class="card-text">{{currJob.startDate}} </p>
+              <p class="card-text">{{currJob.startDate | date:'fullDate'}}</p>
               <p class="card-text">{{currJob.estimatedDuration}} </p>
-              <p class="card-text">
-                <!--ngFor-->
-                <span class="badge badge-pill badge-secondary">Required Skills</span>
-              </p>
 
               <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Contact" />
             </div>
