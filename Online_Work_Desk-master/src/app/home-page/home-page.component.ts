@@ -32,7 +32,18 @@ export class HomePageComponent implements OnInit {
           let typed = new Typed('.auto-typed', options);
         }
       });
-    } else this.userName = 'User';
+    } else { let options = {
+      strings: ['To Khademni','To our website'],
+      typeSpeed: 100,
+      backSpeed: 80,
+      showCursor: true,
+      cursorChar: '|',
+      loop: true,
+    };
+    let typed = new Typed('.auto-typed', options);
+  
+      
+    };
 
 
   }

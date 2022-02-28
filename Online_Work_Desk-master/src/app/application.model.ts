@@ -1,6 +1,6 @@
 export interface Application {
   applicationId: number,
-  Description: string,
+  description: string,
   applicationOwner: number,
   job: number
 }

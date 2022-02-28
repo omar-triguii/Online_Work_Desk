@@ -41,7 +41,7 @@
   </div>
 
   <!--job card group-->
-  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length">
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length" >
     <div *ngFor="let job of allJobs;let indexOfelement=index;" class="col">
       <div class="card h-100" style="width: 18rem">
         <img [src]="job.jobImageUrl" class="card-img-top" alt="Card image cap " />

@@ -49,8 +49,18 @@ export class NavBarComponent implements OnInit {
       localStorage.clear();
       console.log(this.logoutmessage)
       this.router.navigate(['login'])
-    })
+  })
+}/*
+loginfunction(){
+  if (this.islogedin==true){
+    this.router.navigate(['homelogined'])
+    return true
   }
+  else{
+    this.router.navigate(['home'])
+    return false
+  }
+}*/
 }
 
 

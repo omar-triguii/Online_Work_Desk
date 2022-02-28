@@ -15,6 +15,9 @@ import { WrongRouteComponentComponent } from './wrong-route-component/wrong-rout
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
+import { JobsPerUserComponent } from './jobs-per-user/jobs-per-user.component';
+import { ViewapplicationsforeachjobComponent } from './viewapplicationsforeachjob/viewapplicationsforeachjob.component';
+import { ViewsingleapplicationComponent } from './viewsingleapplication/viewsingleapplication.component';
 
 
 
@@ -32,6 +35,9 @@ import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.compone
     SignUpComponent,
     WrongRouteComponentComponent,
     HomeafterloginComponent,
+    JobsPerUserComponent,
+    ViewapplicationsforeachjobComponent,
+    ViewsingleapplicationComponent,
 
 
 
