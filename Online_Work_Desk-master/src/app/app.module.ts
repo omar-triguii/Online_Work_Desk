@@ -14,13 +14,13 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { WrongRouteComponentComponent } from './wrong-route-component/wrong-route-component.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import { FindUserComponent } from './find-user/find-user.component';
+import { OtherUserProfileComponent } from './other-user-profile/other-user-profile.component';
 import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
 import { JobsPerUserComponent } from './jobs-per-user/jobs-per-user.component';
 import { ViewapplicationsforeachjobComponent } from './viewapplicationsforeachjob/viewapplicationsforeachjob.component';
 import { ViewsingleapplicationComponent } from './viewsingleapplication/viewsingleapplication.component';
-
-
-
 
 @NgModule({
   declarations: [
@@ -34,21 +34,19 @@ import { ViewsingleapplicationComponent } from './viewsingleapplication/viewsing
     FindJobComponent,
     SignUpComponent,
     WrongRouteComponentComponent,
+
     HomeafterloginComponent,
     JobsPerUserComponent,
     ViewapplicationsforeachjobComponent,
     ViewsingleapplicationComponent,
 
-
-
+    FindUserComponent,
+    OtherUserProfileComponent,
+    HomeafterloginComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule   ,
-    HttpClientModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

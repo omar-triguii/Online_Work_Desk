@@ -3,6 +3,13 @@
     height: 50px;
 }
 
+.username {
+    text-transform: capitalize;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    padding-top: 9%;
+}
+
 .icon {
     height: 20px;
 }
