@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import { UserService } from '../services/user.service';
 
@@ -42,7 +43,7 @@ selectFile(event: any) { //Angular 11, for stricter type
   }
 }
 //
-  constructor(private asd:AuthServiceService,private aux:UserService) { 
+  constructor(private asd:AuthServiceService,private aux:UserService,private router:Router) { 
     
     this.islogedin=this.asd.loggedIn()
     console.log(this.islogedin + "test")
@@ -70,7 +71,8 @@ selectFile(event: any) { //Angular 11, for stricter type
     this.userId=this.dataReceived.userId
     console.log(this.userId)
     this.aux.update(this.userId,data).subscribe((response)=>
-      console.log(response),err=>console.log(err))
+      {console.log(response)
+      this.router.navigate(['homelogined'])},err=>console.log(err))
   }
 
 }
