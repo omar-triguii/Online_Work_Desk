@@ -44,7 +44,8 @@
   <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length" >
     <div *ngFor="let job of allJobs;let indexOfelement=index;" class="col">
       <div class="card h-100" style="width: 18rem">
-        <img [src]="job.jobImageUrl" class="card-img-top" alt="Card image cap " />
+        <img [src]="job.jobImageUrl" class="card-img-top" alt="Card image cap " *ngIf="job.jobImageUrl"/>
+        <img src="../../assets/job.png" class="card-img-top" alt="Card image cap " *ngIf="!job.jobImageUrl"/>
         <div class="card-body">
           <h5 class="card-title">{{job.title}}</h5>
           <h4 class="card-title">{{job.industry}}</h4>

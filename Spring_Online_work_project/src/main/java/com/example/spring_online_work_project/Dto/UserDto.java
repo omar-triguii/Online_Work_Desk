@@ -30,7 +30,7 @@ public class UserDto {
 
     private String address;
 
-    private byte[] profileImage;
+    private String profileImage;
 
     private float rating;
 

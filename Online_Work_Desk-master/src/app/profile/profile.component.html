@@ -19,17 +19,17 @@
           <div class="row mt-2">
             <div class="col-md-6">
               <label class="labels">Name</label><input type="text" class="form-control" placeholder="First Name"
-                value={{dataReceived.firstName}} #firstName="ngModel" ngModel name="firstName" />
+                name="firstName" [(ngModel)]="dataReceived.firstName" />
             </div>
             <div class="col-md-6">
               <label class="labels">Last Name</label><input type="text" class="form-control"
-                value={{dataReceived.lastName}} placeholder="Last Name" #lastName="ngModel" ngModel name="lastName" />
+                value={{dataReceived.lastName}} placeholder="Last Name" name="lastName" />
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-12">
               <label class="labels">PhoneNumber</label><input type="text" class="form-control"
-                placeholder="Phone Number" value={{dataReceived.phoneNumber}} #phoneNumber="ngModel" ngModel
+                placeholder="Phone Number" value={{dataReceived.phoneNumber}}
                 name="phoneNumber" />
             </div>
             <div class="col-md-12">

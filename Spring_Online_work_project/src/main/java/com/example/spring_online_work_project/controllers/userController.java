@@ -37,7 +37,7 @@ public class userController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<String> saveUser(@RequestParam("profileImage") MultipartFile profileImage, @RequestParam("FirstName") String firstName,
+    public ResponseEntity<String> saveUser(@RequestParam("profileImage") String profileImage, @RequestParam("FirstName") String firstName,
                                            @RequestParam("lastName") String lastName, @RequestParam("phoneNumber")String phoneNumber,
                                            @RequestParam("adress")String adress,
                                            @RequestParam("email") String email, @RequestParam("password") String password)

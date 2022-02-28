@@ -5,6 +5,7 @@ import { baseUrl } from '../shared/baseUrl';
 import { ProcessHTTPMsgServiceService } from './process-httpmsg-service.service';
 import { Job } from "../models/job.model";
 import { Application } from '../application.model';
+import { User } from '../models/user.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -33,9 +34,9 @@ export class JobService {
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
 
-  addJob(userId: number, job: Job): Observable<any> {
-    job.owner = userId;
-    return this.http.post<any>(this.url + `${userId}/addJob`, job, httpOptions)
+  addJob(user: User, job: Job): Observable<any> {
+    job.owner = user;
+    return this.http.post<any>(this.url + `${user.userId}/addJob`, job, httpOptions)
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
 

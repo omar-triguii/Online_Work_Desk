@@ -1,4 +1,5 @@
 import { Byte } from "@angular/compiler/src/util";
+import { User } from "./user.model";
 
 export interface Job {
   jobId:number,
@@ -9,8 +10,8 @@ export interface Job {
   price: number,
   status: 'Free' | 'Busy' | 'Deleted',
   industry: string,
-  jobImageUrl: string,
-  owner: number,
+  jobImageUrl?: string | null,
+  owner: User,
   applications?: any[]
 
 }

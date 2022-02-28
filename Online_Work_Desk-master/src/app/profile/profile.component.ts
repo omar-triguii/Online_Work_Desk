@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
+import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -42,6 +43,7 @@ export class ProfileComponent implements OnInit {
 
     }
   }
+
   //
   constructor(private asd: AuthServiceService, private aux: UserService, private router: Router) {
 
@@ -66,17 +68,23 @@ export class ProfileComponent implements OnInit {
       )
     }
   }
+
+
   ngOnInit(): void {
   }
   updateUser(f: any) {
     let data = f.value
     console.log(data);
-    this.userId = this.dataReceived.userId
+    let user: User = <User>{};
+    user.address = data.address;
+    user.birthDate = data.birthDate;
+    user.password = data.password;
+    /* this.userId = this.dataReceived.userId
     console.log(this.userId)
     this.aux.update(this.userId, data).subscribe((response) => {
       console.log(response)
       this.router.navigate(['home'])
-    }, err => console.log(err))
+    }, err => console.log(err)) */
   }
 
 }

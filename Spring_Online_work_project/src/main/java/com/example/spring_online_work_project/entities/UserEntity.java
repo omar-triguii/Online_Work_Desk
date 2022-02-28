@@ -26,7 +26,7 @@ public class UserEntity {
     @Column
     private String address;
     @Column
-    private byte[] profileImage;
+    private String profileImage;
     @Column
     private float rating;
     @Column
@@ -124,11 +124,11 @@ public class UserEntity {
         this.address = address;
     }
 
-    public byte[] getProfileImage() {
+    public String getProfileImage() {
         return profileImage;
     }
 
-    public void setProfileImage(byte[] profileImage) {
+    public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
     }
 

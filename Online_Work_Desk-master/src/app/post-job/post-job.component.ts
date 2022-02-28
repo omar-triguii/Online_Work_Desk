@@ -63,7 +63,7 @@ export class PostJobComponent implements OnInit {
     let data = f.value;
     job.title = data.title;
     job.description = data.description;
-    job.jobImageUrl = `http://localhost:8087/files/${this.fileName}`;
+    this.fileName ? job.jobImageUrl = `http://localhost:8087/files/${this.fileName}` : job.jobImageUrl = null;
     job.estimatedDuration = data.estimatedDuration;
     job.status = 'Free';
     job.price = data.price;
@@ -72,7 +72,8 @@ export class PostJobComponent implements OnInit {
     job.startDate = data.startDate;
     this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
       next: (user: User) => {
-        this.jobService.addJob(user.userId, job).subscribe({
+        job.owner = user;
+        this.jobService.addJob(user, job).subscribe({
           next: (response) => console.log(response),
           error: (err) => console.log(err)
         });

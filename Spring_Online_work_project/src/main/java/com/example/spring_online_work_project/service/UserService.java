@@ -113,14 +113,14 @@ public class UserService {
         return mapEntityToDto(user);
     }
 
-    public void save(MultipartFile image, String firstName, String lastName, String phoneNumber, String adress, String email, String password) throws IOException
+    public void save(String image, String firstName, String lastName, String phoneNumber, String adress, String email, String password) throws IOException
     {
         UserEntity user=new UserEntity();
         user.setEmail(email);
         user.setAddress(adress);
         user.setFirstName(firstName);
         user.setPassword(passwordEncoder.encode(password));
-        user.setProfileImage(compressImage(image.getBytes()));
+        user.setProfileImage(image);
         user.setPhoneNumber(phoneNumber);
         user.setLastName(lastName);
 
