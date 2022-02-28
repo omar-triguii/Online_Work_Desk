@@ -7,7 +7,7 @@ import { AuthServiceService } from '../auth-service.service';
   styleUrls: ['./login-interface.component.css']
 })
 export class LoginInterfaceComponent implements OnInit {
-
+  omar:boolean | undefined 
   dataReceived:any
   IsLoggedIn:Boolean=false
   constructor(private aus:AuthServiceService,private route:Router) {
@@ -28,9 +28,14 @@ export class LoginInterfaceComponent implements OnInit {
       console.log(this.aus.loggedIn())
       this.route.navigate(['homelogined']) .then(() => {
         window.location.reload();
+        this.omar=false
       });
       }
-      ,err=>console.log(err))
+      ,err=>{
+        console.log(err)
+        this.omar=true
+        console.log(this.omar)
+      })
     
 
   }
