@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Job } from '../models/job.model';
+import { JobService } from '../services/job.service';
 
 @Component({
   selector: 'app-find-job',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindJobComponent implements OnInit {
   jobs: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  constructor() {}
+  allJobs: Job[] = [];
+  allImages: any[] = [];
+  currJob: Job = <Job>{};
 
-  ngOnInit(): void {}
+  constructor(private jobService: JobService, private _sanitizer: DomSanitizer) { }
+
+  ngOnInit(): void {
+    this.jobService.getAllJobs().subscribe({
+      next: (jobs) => {
+        this.allJobs = jobs;
+        this.allJobs.forEach((job) => {
+          this.allImages.push(this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + job.jobImageUrl));
+          console.log(this.allImages[this.allImages.length-1]);
+        });
+        //this.allJobs.forEach((job) => console.log(job.jobImageUrl));
+      }
+    });
+  }
+
+  seeJobDetails(job: Job) {
+    this.currJob = job;
+  }
+
   locationList: string[] = [
     'Ariana',
     'Béja',

@@ -9,7 +9,7 @@ export interface Job {
   price: number,
   status: 'Free' | 'Busy' | 'Deleted',
   industry: string,
-  jobImageUrl: Byte[],
+  jobImageUrl: string,
   owner: number,
   applications: any[]
 
