@@ -8,7 +8,7 @@ const AUTH_API = 'http://localhost:8087/user';
   providedIn: 'root'
 })
 export class AuthServiceService {
-  helper = new JwtHelperService
+  helper= new JwtHelperService
   constructor(private http: HttpClient) { }
 
   register(body:any): Observable<any> {
@@ -30,28 +30,30 @@ export class AuthServiceService {
     return this.http.get(`http://localhost:8081/getadmin/${email}`)
   }*/
 
+  saveDataProfil(token:any){
+
     //  let decodeToken= this.helper.decodeToken(token)
 
-    localStorage.setItem('token', token)
-    let decodeToken = this.helper.decodeToken(token)
+     localStorage.setItem('token',token)
+    let decodeToken=this.helper.decodeToken(token)
 
     console.log(decodeToken.sub)
 
-  }
-  getEmail() {
-    let token: any = localStorage.getItem('token')
-    let decodeToken = this.helper.decodeToken(token)
-    return decodeToken.sub
-  }
-  loggedIn() {
-    let token: any = localStorage.getItem('token')
-    let decodeToken = this.helper.decodeToken(token)
-    if (this.helper.isTokenExpired(token)) {
-      return false
+    }
+    getEmail(){
+     let token:any= localStorage.getItem('token')
+    let decodeToken=this.helper.decodeToken(token)
+      return decodeToken.sub
+    }
+    loggedIn(){
+      let token:any=localStorage.getItem('token')
+      let decodeToken=this.helper.decodeToken(token)
+      if(this.helper.isTokenExpired(token)){
+        return false
+      }
+      return true
     }
     logout() :Observable<any>{
       return this.http.get('http://localhost:8087/user/logout',{responseType: 'text'})
     }
 }
-
-
