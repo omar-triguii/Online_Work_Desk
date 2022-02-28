@@ -1,9 +1,9 @@
 <div class="container rounded bg-white mt-5 mb-5">
-    <form action="">
+    <form #f="ngForm" (ngSubmit)="updateUser(f)" >
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="ratio img-responsive img-circle mt-5" src="../../assets/1.jpg" /><span class="font-weight-bold"></span
+                    <img class="ratio img-responsive img-circle mt-5" [src]="url" *ngIf="url" style="width: 350px;height: 430px;margin-left: -200px;"/><span class="font-weight-bold"></span
           ><span class="text-black-50"></span
           ><span>
             <label class="labels">Change your profile picture</label
@@ -12,6 +12,9 @@
               class="form-control"
               value=""
               accept="image/png, image/jpeg"
+              (change)="selectFile($event)"
+              
+              
             />
           </span>
                 </div>
@@ -28,7 +31,9 @@
                 type="text"
                 class="form-control"
                 placeholder="First Name"
-                value=""
+                value={{dataReceived.firstName}}
+                
+                
               />
             </div>
             <div class="col-md-6">
@@ -36,8 +41,10 @@
               ><input
                 type="text"
                 class="form-control"
-                value=""
+                value={{dataReceived.lastName}}
                 placeholder="Last Name"
+               
+                
               />
             </div>
           </div>
@@ -48,7 +55,9 @@
                 type="text"
                 class="form-control"
                 placeholder="Phone Number"
-                value=""
+                value={{dataReceived.phoneNumber}}
+                
+                
               />
             </div>
             <div class="col-md-12">
@@ -57,7 +66,9 @@
                 type="text"
                 class="form-control"
                 placeholder="Address"
-                value=""
+               
+                #address="ngModel" ngModel
+                name="address"
               />
             </div>
             <div class="col-md-12">
@@ -67,6 +78,8 @@
                 class="form-control"
                 placeholder="Password"
                 value=""
+                #password="ngModel" ngModel
+                name="password"
               />
             </div>
 
@@ -76,7 +89,11 @@
                 type="date"
                 class="form-control"
                 placeholder="Birth Date"
-                value=""
+                #birthdate="ngModel" ngModel
+                name="birthdate"
+                
+                
+                
               />
             </div>
           </div>
@@ -87,16 +104,17 @@
               name="gender"
               id="inlineRadio1"
               value="male"
+              
             />
             <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female" />
-                            <label class="form-check-label" for="inlineRadio2">Femlae</label>
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
                         </div>
 
                         <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="button">
+                            <button class="btn btn-primary profile-button" type="submit">
               Save Profile
             </button>
                         </div>
