@@ -72,7 +72,7 @@ public class JobService {
         this.jobRepo.save(jobRequest);
     }
     public List<Job> JobsPostedByUser(Long userId){
-        List<Job> result = new ArrayList<>() ;
+        List<Job> result = new ArrayList<Job>() ;
         List<Job> AllJobs = this.jobRepo.findAll();
         for (int i=0;i<AllJobs.size();i++){
            // Long l= new Long(i);
