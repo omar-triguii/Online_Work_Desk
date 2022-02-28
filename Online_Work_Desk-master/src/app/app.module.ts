@@ -14,15 +14,11 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { WrongRouteComponentComponent } from './wrong-route-component/wrong-route-component.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
+
 import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
-=======
+
 import { FindUserComponent } from './find-user/find-user.component';
 import { OtherUserProfileComponent } from './other-user-profile/other-user-profile.component';
->>>>>>> 3603adca703e72c701ae88f6547cff28cd499884
-
-
-
 
 @NgModule({
   declarations: [
@@ -36,23 +32,14 @@ import { OtherUserProfileComponent } from './other-user-profile/other-user-profi
     FindJobComponent,
     SignUpComponent,
     WrongRouteComponentComponent,
-<<<<<<< HEAD
+
     HomeafterloginComponent,
-=======
+
     FindUserComponent,
     OtherUserProfileComponent,
->>>>>>> 3603adca703e72c701ae88f6547cff28cd499884
-    
-    
-    
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule   ,
-    HttpClientModule   
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

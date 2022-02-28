@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 import { globalComponenet } from '../global/global.component';
+
 //import {  } from "typed.js";
 
 @Component({

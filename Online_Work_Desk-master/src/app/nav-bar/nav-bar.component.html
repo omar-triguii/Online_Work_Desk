@@ -31,9 +31,10 @@
             </ul>
 
             <form class="d-flex">
-                <h1 style="font-size: 30px; display: inline;padding-top: 10px;color: tomato;">{{dataReceived}}</h1>
+                <p class="username">
+                    {{ dataReceived }}
+                </p>
                 <div *ngIf="islogedin" class="dropdown">
-                    
                     <button class="btn dropdown-toggle shadow-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="../../assets/user.png" class="iconProfile" alt="" />
           </button>
@@ -43,7 +44,9 @@
                             <a class="dropdown-item" routerLink="/profile">My profile</a>
                         </li>
                         <li><a class="dropdown-item" routerLink="/profile">Settings</a></li>
-                        <li><button class="dropdown-item" (click)="logout()">Log Out</button></li>
+                        <li>
+                            <button class="dropdown-item" (click)="logout()">Log Out</button>
+                        </li>
                     </ul>
                 </div>
             </form>
