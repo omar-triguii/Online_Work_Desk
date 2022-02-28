@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Typed from 'typed.js';
 import { AuthServiceService } from '../auth-service.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class HomeafterloginComponent implements OnInit {
   dataReceived:any
+
   email:""
   user:any
   constructor(private asd:AuthServiceService,private route:Router) {
@@ -20,7 +22,7 @@ export class HomeafterloginComponent implements OnInit {
     console.log(this.email)
     this.asd.getusernamebyemail(this.email).subscribe((response)=>{
     this.dataReceived=response
-      console.log(this.dataReceived
+         console.log(this.dataReceived
         )
       },
       (err:HttpErrorResponse)=>{
@@ -29,7 +31,15 @@ export class HomeafterloginComponent implements OnInit {
     
  
    }
-  ngOnInit(): void {
+   ngOnInit(): void {
+    const options = {
+     String : this.dataReceived,
+      typeSpeed: 100,
+      backSpeed: 80,
+      showCursor: true,
+      cursorChar: '|',
+      loop: true,
+    };
+    const typed = new Typed('.auto-typed', options);
   }
-
 }

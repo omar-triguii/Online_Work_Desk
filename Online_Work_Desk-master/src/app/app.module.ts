@@ -15,10 +15,9 @@ import { WrongRouteComponentComponent } from './wrong-route-component/wrong-rout
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
-
 import { FindUserComponent } from './find-user/find-user.component';
 import { OtherUserProfileComponent } from './other-user-profile/other-user-profile.component';
+import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +36,10 @@ import { OtherUserProfileComponent } from './other-user-profile/other-user-profi
 
     FindUserComponent,
     OtherUserProfileComponent,
+    HomeafterloginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+
   providers: [],
   bootstrap: [AppComponent],
 })

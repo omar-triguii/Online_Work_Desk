@@ -11,6 +11,12 @@ const httpOptions = {
   }),
 };
 
+const httpOptionsFormData = {
+  headers: new HttpHeaders({
+    'Content-Type': 'multipart/form-data'
+  }),
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,19 +34,18 @@ export class JobService {
 
   addJob(userId: number, job: Job): Observable<any> {
 
-    let formData = new FormData();
-    job.title ?? formData.append('title', job.title);
-    job.description ?? formData.append('.description', job.description);
-    job.estimatedDuration ?? formData.append('.estimatedDuration', job.estimatedDuration);
-    job.industry ?? formData.append('.industry', job.industry);
-    job.owner ?? formData.append('.owner', job.owner);
-    job.jobImageUrl ?? formData.append('.jobImageUrl', job.jobImageUrl);
-    job.status ?? formData.append('.status', job.status);
-    job.price ?? formData.append('.price', job.price);
+    /* let formData = new FormData();
+    job.title ?? formData.append('Title', job.title);
+    job.description ?? formData.append('Description', job.description);
+    job.estimatedDuration ?? formData.append('estimatedDuration', job.estimatedDuration);
+    job.industry ?? formData.append('Industry', job.industry);
+    job.jobImageUrl ?? formData.append('jobImageUrl', job.jobImageUrl);
+    job.status ?? formData.append('status', 'Free');
+    job.price ?? formData.append('Price', job.price); */
     //job.startDate ?? formData.append('.startDate', job.startDate);
     //job.applications ?? formData.append('.applications', job.applications);
 
-    return this.http.post<any>(this.url + `${userId}/addJob`, formData)
+    return this.http.post<any>(this.url + `${userId}/addJob`, job, httpOptionsFormData)
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
 

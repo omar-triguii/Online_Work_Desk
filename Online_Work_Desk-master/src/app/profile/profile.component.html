@@ -1,124 +1,78 @@
 <div class="container rounded bg-white mt-5 mb-5">
-    <form action="">
-        <div class="row">
-            <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    <img class="ratio img-responsive img-circle mt-5" src="../../assets/1.jpg" /><span class="font-weight-bold"></span
-          ><span class="text-black-50"></span
-          ><span>
-            <label class="labels">Change your profile picture</label
-            ><input
-              type="file"
-              class="form-control"
-              value=""
-              accept="image/png, image/jpeg"
-            />
+  <form #f="ngForm" (ngSubmit)="updateUser(f)">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <img class="ratio img-responsive img-circle mt-5" [src]="url" *ngIf="url"
+            style="width: 350px;height: 430px;margin-left: -200px;" /><span class="font-weight-bold"></span><span
+            class="text-black-50"></span><span>
+            <label class="labels">Change your profile picture</label><input type="file" class="form-control" value=""
+              accept="image/png, image/jpeg" (change)="selectFile($event)" />
           </span>
-                </div>
-            </div>
-            <div class="col-md-5 border-right">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-6">
-                            <label class="labels">Name</label
-              ><input
-                type="text"
-                class="form-control"
-                placeholder="First Name"
-                value=""
-              />
+        </div>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label class="labels">Name</label><input type="text" class="form-control" placeholder="First Name"
+                value={{dataReceived.firstName}} #firstName="ngModel" ngModel name="firstName" />
             </div>
             <div class="col-md-6">
-              <label class="labels">Last Name</label
-              ><input
-                type="text"
-                class="form-control"
-                value=""
-                placeholder="Last Name"
-              />
+              <label class="labels">Last Name</label><input type="text" class="form-control"
+                value={{dataReceived.lastName}} placeholder="Last Name" #lastName="ngModel" ngModel name="lastName" />
             </div>
           </div>
           <div class="row mt-3">
             <div class="col-md-12">
-              <label class="labels">PhoneNumber</label
-              ><input
-                type="text"
-                class="form-control"
-                placeholder="Phone Number"
-                value=""
-              />
+              <label class="labels">PhoneNumber</label><input type="text" class="form-control"
+                placeholder="Phone Number" value={{dataReceived.phoneNumber}} #phoneNumber="ngModel" ngModel
+                name="phoneNumber" />
             </div>
             <div class="col-md-12">
-              <label class="labels">Address</label
-              ><input
-                type="text"
-                class="form-control"
-                placeholder="Address"
-                value=""
-              />
+              <label class="labels">Address</label><input type="text" class="form-control" placeholder="Address"
+                #address="ngModel" ngModel name="address" />
             </div>
             <div class="col-md-12">
-              <label class="labels">Password</label
-              ><input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                value=""
-              />
+              <label class="labels">Password</label><input type="password" class="form-control" placeholder="Password"
+                value="" #password="ngModel" ngModel name="password" />
             </div>
 
             <div class="col-md-12">
-              <label class="labels">Birth Date</label
-              ><input
-                type="date"
-                class="form-control"
-                placeholder="Birth Date"
-                value=""
-              />
+              <label class="labels">Birth Date</label><input type="date" class="form-control" placeholder="Birth Date"
+                #birthdate="ngModel" ngModel name="birthdate" />
             </div>
           </div>
           <div class="form-check form-check-inline">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="gender"
-              id="inlineRadio1"
-              value="male"
-            />
+            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" #gender="ngModel"
+              ngModel name="address" />
             <label class="form-check-label" for="inlineRadio1">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female" />
-                            <label class="form-check-label" for="inlineRadio2">Femlae</label>
-                        </div>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female" />
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+          </div>
 
-                        <div class="mt-5 text-center">
-                            <button class="btn btn-primary profile-button" type="button">
+          <div class="mt-5 text-center">
+            <button class="btn btn-primary profile-button" type="submit">
               Save Profile
             </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center experience">
-                            <span>Resume</span
-            ><span class="border px-3 p-1 add-experience"
-              ><i class="fa fa-plus"></i>&nbsp;Experience</span
-            >
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center experience">
+            <span>Resume</span><span class="border px-3 p-1 add-experience"><i
+                class="fa fa-plus"></i>&nbsp;Experience</span>
           </div>
           <br />
           <div class="col-md-12">
-            <label class="labels">Upload Resume</label
-            ><input
-              type="file"
-              class="form-control"
-              accept="application/pdf"
-              value=""
-            />
+            <label class="labels">Upload Resume</label><input type="file" class="form-control" accept="application/pdf"
+              value="" />
           </div>
           <br />
         </div>
