@@ -26,14 +26,17 @@ export class UserService {
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
 
-  updateUser(userId: number, user: User): Observable<User> {
+  /*updateUser(userId: number, user: User): Observable<User> {
     return this.http.put<User>(this.url + `update/${userId}`, user, httpOptions)
       .pipe(catchError(this.processHttpMsgService.handleError));
-  }
+  }*/
 
   addUser(user: User): Observable<String> {
     return this.http.post<string>(this.url + 'register', user, httpOptions)
       .pipe(catchError(this.processHttpMsgService.handleError));
+  }
+  update(userId:any,body:any){
+    return this.http.put(`http://localhost:8087/user/update/${userId}`,body)
   }
 
 }
