@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Typed from 'typed.js';
+import { AuthServiceService } from '../auth-service.service';
 import { globalComponenet } from '../global/global.component';
 //import {  } from "typed.js";
 
@@ -10,17 +11,40 @@ import { globalComponenet } from '../global/global.component';
 })
 export class HomePageComponent implements OnInit {
   userLogin: boolean = globalComponenet.userLogin;
-  constructor() {}
+  userName: string = '';
+
+  constructor(private authService: AuthServiceService) {}
 
   ngOnInit(): void {
-    const options = {
-      strings: ['Mouadh.', 'Tira.', 'La Corda.', 'Ingenieur.', 'The Best.'],
+
+    if(this.authService.loggedIn()) {
+      this.authService.getusernamebyemail(this.authService.getEmail()).subscribe({
+        next: (username: string) => {
+          this.userName = username;
+          let options = {
+            strings: this.userName.split(' '),
+            typeSpeed: 100,
+            backSpeed: 80,
+            showCursor: true,
+            cursorChar: '|',
+            loop: true,
+          };
+          let typed = new Typed('.auto-typed', options);
+        }
+      });
+    } else { let options = {
+      strings: ['To Khademni','To our website'],
       typeSpeed: 100,
       backSpeed: 80,
       showCursor: true,
       cursorChar: '|',
       loop: true,
     };
-    const typed = new Typed('.auto-typed', options);
+    let typed = new Typed('.auto-typed', options);
+  
+      
+    };
+
+
   }
 }

@@ -1,7 +1,7 @@
 import { Byte } from "@angular/compiler/src/util";
 
 export interface Job {
-
+  jobId:number,
   title: string,
   description: string,
   startDate: Date,
@@ -9,8 +9,9 @@ export interface Job {
   price: number,
   status: 'Free' | 'Busy' | 'Deleted',
   industry: string,
-  jobImageUrl: Byte[],
+  jobImageUrl: string,
   owner: number,
-  applications: any[]
+  applications?: any[],
+  requiredSkills?: string[]
 
 }

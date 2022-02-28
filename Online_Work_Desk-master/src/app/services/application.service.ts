@@ -35,4 +35,7 @@ export class ApplicationService {
     return this.http.get<Application[]>(this.url + 'getallapp')
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
+  getApplicationByID(jobId:number,applicationId:number){
+    return this.http.get<Application>(this.url + `${jobId}/${applicationId}/viewapplication`)
+  }
 }

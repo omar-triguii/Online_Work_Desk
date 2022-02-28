@@ -1,103 +1,94 @@
 <div class="container mb-5">
-    <!--searsh-->
-    <div class="wrapper fadeInDown mt-5 pt-5">
-        <div id="formContent">
-            <div class="position-relative">
-                <input type="text" id="search" class="fadeIn fourth" name="searsh" placeholder="Searsh" />
-                <button class="add">
-          <img class="addbtn" src="../../assets/search (1).png" alt="" />
+  <!--searsh-->
+  <div class="wrapper fadeInDown mt-5 pt-5">
+    <div id="formContent">
+      <div class="position-relative">
+        <input type="text" id="search" class="fadeIn fourth" name="searsh" placeholder="Searsh" />
+        <button class="add">
+          <img class="addbtn" src="assets/search (1).png" alt="" />
         </button>
-            </div>
-        </div>
+      </div>
     </div>
-    <!--filter-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm"></div>
-            <div class="col-m">
-                <div class="navbar navbar-expand-sm bg- navbar-dark mt-2">
-                    <div class="container-fluid">
-                        <div class="collapse navbar-collapse" id="collapsibleNavbar" style="justify-content: space-evenly">
-                            <ul class="navbar-nav">
-                                <li class="nav-item classmr shadow-none">
-                                    <select class="form-select form-select form-select-sm">
+  </div>
+  <!--filter-->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm"></div>
+      <div class="col-m">
+        <div class="navbar navbar-expand-sm bg- navbar-dark mt-2">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="collapsibleNavbar" style="justify-content: space-evenly">
+              <ul class="navbar-nav">
+                <li class="nav-item classmr shadow-none">
+                  <select class="form-select form-select form-select-sm">
                     <option *ngFor="let job of jobList">{{ job }}</option>
                   </select>
-                                </li>
-                                <li class="nav-item classmr">
-                                    <select class="form-select form-select-sm">
+                </li>
+                <li class="nav-item classmr">
+                  <select class="form-select form-select-sm">
                     <option *ngFor="let location of locationList">
                       {{ location }}
                     </option>
                   </select>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                </li>
+              </ul>
             </div>
-            <div class="col-sm"></div>
+          </div>
         </div>
+      </div>
+      <div class="col-sm"></div>
     </div>
+  </div>
 
-    <!--job card group-->
-    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5">
-        <div *ngFor="let job of jobs" class="col">
-            <div class="card h-100" style="width: 18rem">
-                <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top" alt="Card image cap " />
-                <div class="card-body">
-                    <h5 class="card-title">Title</h5>
-                    <h4 class="card-title">Industry</h4>
-                    <p class="card-text">PRICE $</p>
-                    <div id="formFooter ">
-                        <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Detail " />
-                    </div>
-                </div>
-            </div>
+  <!--job card group-->
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length" >
+    <div *ngFor="let job of allJobs;let indexOfelement=index;" class="col">
+      <div class="card h-100" style="width: 18rem">
+        <img src="../assets/jobimage.jpg" class="card-img-top" alt="Card image cap " />
+        <div class="card-body">
+          <h5 class="card-title">{{job.title}}</h5>
+          <h4 class="card-title">{{job.industry}}</h4>
+          <p class="card-text">{{job.price}} $</p>
+          <div id="formFooter ">
+            <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle"
+              (click)="seeJobDetails(job)" value="Detail " />
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <!--modal-->
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel ">Job Offer</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body wrapper">
-                    <div class="card" style="width: 18rem">
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top" alt="... " />
-                        <div class="card-body">
-                            <h5 class="card-title">Title</h5>
-                            <h4 class="card-title">Industry</h4>
-                            <p class="card-text">PRICE $</p>
-                            <p class="card-text">Description</p>
-                            <p class="card-text">Started Date</p>
-                            <p class="card-text">Estimated Duration</p>
-                            <p class="card-text">
-                                <!--ngFor-->
-                                <span class="badge badge-pill badge-secondary">Required Skills1</span
-                >
+  <!--modal-->
+  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel ">Job Offer</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body wrapper">
+          <div class="card" style="width: 18rem">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top"
+              alt="... " />
+            <div class="card-body">
+              <h5 class="card-title">{{currJob.title}}</h5>
+              <h4 class="card-title">{{currJob.industry}}</h4>
+              <p class="card-text">{{currJob.price}} $</p>
+              <p class="card-text">{{currJob.description}} </p>
+              <p class="card-text">{{currJob.startDate}} </p>
+              <p class="card-text">{{currJob.estimatedDuration}} </p>
+              <p class="card-text">
+                <!--ngFor-->
+                <span class="badge badge-pill badge-secondary">Required Skills1</span>
               </p>
 
-              <input
-                type="button"
-                class="fourth"
-                data-bs-toggle="modal"
-                href="#exampleModalToggle"
-                value="Contact"
-              />
+              <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle" value="Contact" />
             </div>
           </div>
         </div>
         <div id="formFooter">
-          <input
-            type="button"
-            class="fourth"
-            data-bs-toggle="modal"
-            value="Close"
-          />
+          <input type="button" class="fourth" data-bs-toggle="modal" value="Close" />
         </div>
       </div>
     </div>

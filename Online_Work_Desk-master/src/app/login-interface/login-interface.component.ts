@@ -12,21 +12,21 @@ export class LoginInterfaceComponent implements OnInit {
   IsLoggedIn:Boolean=false
   constructor(private aus:AuthServiceService,private route:Router) {
     console.log(this.aus.loggedIn())
-   }
+  }
 
   ngOnInit(): void {
   }
 
 
-  loginadmin(f:any){
-    let data=f.value
-    this.aus.login(data).subscribe((response)=>
-      {this.dataReceived=response
-        this.aus.saveDataProfil(this.dataReceived.token)
-        this.IsLoggedIn=true
+  loginadmin(f: any) {
+    let data = f.value
+    this.aus.login(data).subscribe((response) => {
+      this.dataReceived = response
+      this.aus.saveDataProfil(this.dataReceived.token)
+      this.IsLoggedIn = true
       console.log(this.dataReceived)
       console.log(this.aus.loggedIn())
-      this.route.navigate(['homelogined']) .then(() => {
+      this.route.navigate(['home']).then(() => {
         window.location.reload();
         this.omar=false
       });
