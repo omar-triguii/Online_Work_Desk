@@ -16,5 +16,5 @@ public class JobDto {
     private int Price;
     private Status status;
     private String industry;
-    private byte[] jobImageUrl;
+    private String jobImageUrl;
 }

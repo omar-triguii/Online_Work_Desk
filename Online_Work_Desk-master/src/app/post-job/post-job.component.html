@@ -19,7 +19,7 @@
         <input type="text" id="description" class="fadeIn fourth" name="description" placeholder="Description" #Description="ngModel" ngModel/>
         <label for="jobImageUrl">Select image:</label>
         <input type="file" id="jobImageUrl" class="fadeIn fourth" name="jobImageUrl" placeholder="Image"
-          accept="image/*" #jobImageUrl="ngModel" ngModel/>
+          accept="image/*" (change)="onFileSelected($event)" #jobImageUrl="ngModel" ngModel/>
 
         <div class="position-relative">
           <input type="text" id="requiredSkills" class="fadeIn fourth" name="requiredSkills"

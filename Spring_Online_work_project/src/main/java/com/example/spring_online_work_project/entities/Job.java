@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -22,7 +21,7 @@ public class Job {
     private int Price;
     private Status status;
     private String industry;
-    private byte[] jobImageUrl;
+    private String jobImageUrl;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner")
     private UserEntity owner;
@@ -94,11 +93,11 @@ public class Job {
         this.industry = industry;
     }
 
-    public byte[] getJobImageUrl() {
+    public String getJobImageUrl() {
         return jobImageUrl;
     }
 
-    public void setJobImageUrl(byte[] jobImageUrl) {
+    public void setJobImageUrl(String jobImageUrl) {
         this.jobImageUrl = jobImageUrl;
     }
     @JsonIgnore

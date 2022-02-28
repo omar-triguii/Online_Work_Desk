@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AuthServiceService } from '../auth-service.service';
+import { Job } from '../models/job.model';
 import { User } from '../models/user.model';
 import { JobService } from '../services/job.service';
 
@@ -37,8 +38,51 @@ export class PostJobComponent implements OnInit {
     }
   }
 
+  fileName = '';
+
+  onFileSelected(event: any) {
+
+    const file:File = event.target.files[0];
+
+    if (file) {
+
+        this.fileName = file.name;
+
+        this.jobService.uploadImage(file).subscribe({
+          next: (response: any) => console.log(response)
+        });
+
+        //const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+        //upload$.subscribe();
+    }
+}
+
   postJob(f: any) {
+    let job: Job = <Job>{};
     let data = f.value;
+    job.title = data.title;
+    job.description = data.description;
+    job.jobImageUrl = `http://localhost:8087/files/${this.fileName}`;
+    job.estimatedDuration = data.estimatedDuration;
+    job.status = 'Free';
+    job.price = data.price;
+    job.applications = [];
+    job.industry = data.industry;
+    job.requiredSkills = this.requiredSkills;
+    job.startDate = data.startDate;
+    console.log(job)
+    this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
+      next: (user: User) => {
+        this.jobService.addJob(user.userId, job).subscribe({
+          next: (response) => console.log(response),
+          error: (err) => console.log(err)
+        });
+      },
+      error: (error) => console.log(error)
+    });
+
+    /* let data = f.value;
     console.log(data);
     this.authService.getuserbyemail(this.authService.getEmail()).subscribe({
       next: (user: User) => {
@@ -48,7 +92,7 @@ export class PostJobComponent implements OnInit {
           error: (err) => console.log(err)
         });
       }
-    })
+    }) */
   }
 
 }

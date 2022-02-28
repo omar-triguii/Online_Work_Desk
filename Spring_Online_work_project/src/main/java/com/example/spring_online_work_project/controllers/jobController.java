@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Date;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("user")
 public class jobController {
@@ -27,15 +27,10 @@ private JobService jobService;
         return new ResponseEntity<>(jobDtos, HttpStatus.OK);
     }
     @PostMapping("/{userId}/addJob")
-    public ResponseEntity<String> addJob(@RequestParam("jobImageUrl") MultipartFile jobImageUrl, @RequestParam("Description") String Description,
-                                         @RequestParam("Price") int Price, @RequestParam("estimatedDuration")int estimatedDuration,
-                                         @RequestParam("Industry")String Industry,
-                                        // @RequestParam("startDate") Date startDate,
-                                         @RequestParam("Status") Status Status,
-                                         @RequestParam("Title") String Title,@PathVariable Long userId)
+    public ResponseEntity<String> addJob(@RequestBody Job job,@PathVariable Long userId)
     {
         try {
-            this.jobService.addJobRequest(jobImageUrl,Description,Price,estimatedDuration,Industry,Status,Title,userId);
+            this.jobService.addJob(job);
             return ResponseEntity.status(HttpStatus.OK).build();
 
         } catch (Exception e) {

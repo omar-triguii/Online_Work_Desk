@@ -55,12 +55,12 @@ public class JobService {
     }
     @Autowired
     private UserRepo userRepo;
-    public void addJobRequest(MultipartFile jobImageUrl, String Description, int Price,
+    public void addJobRequest(String jobImageUrl, String Description, int Price,
                               int estimatedDuration, String Industry, Status Status,
                               String Title,Long userId) throws IOException {
         UserEntity user=this.userRepo.getById(userId);
         Job jobRequest = new Job();
-        jobRequest.setJobImageUrl(compressImage(jobImageUrl.getBytes()));
+        jobRequest.setJobImageUrl(jobImageUrl);
         jobRequest.setDescription(Description);
         jobRequest.setEstimatedDuration(estimatedDuration);
         jobRequest.setIndustry(Industry);
@@ -126,6 +126,12 @@ public class JobService {
         catch (IOException ex) {
         }
         return outputStream.toByteArray();
+    }
+
+
+
+    public void addJob(Job job) {
+        jobRepo.save(job);
     }
 
 

@@ -19,7 +19,7 @@ export class FindJobComponent implements OnInit {
   ngOnInit(): void {
     this.jobService.getAllJobs().subscribe({
       next: (jobs) => {
-        this.allJobs = jobs;
+        this.allJobs = jobs.filter((job: Job) => job.status == 'Free');
         this.allJobs.forEach((job) => {
           this.allImages.push(this._sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + job.jobImageUrl));
           console.log(this.allImages[this.allImages.length-1]);

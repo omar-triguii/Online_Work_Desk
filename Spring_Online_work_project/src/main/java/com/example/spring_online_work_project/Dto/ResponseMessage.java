@@ -1,0 +1,27 @@
+package com.example.spring_online_work_project.Dto;
+
+public class ResponseMessage {
+    private String message;
+    private String fileName;
+
+    public ResponseMessage(String message, String fileName) {
+        this.message = message;
+        this.fileName = fileName;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+}
