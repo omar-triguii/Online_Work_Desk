@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from './models/user.model';
 
 const AUTH_API = 'http://localhost:8087/user';
 @Injectable({
@@ -18,8 +19,8 @@ export class AuthServiceService {
   login(body: any) {
     return this.http.post('http://localhost:8087/user/auth', body)
   }
-  getuserbyemail(email: string) {
-    return this.http.get(`http://localhost:8087/user/omar/${email}`)
+  getuserbyemail(email: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:8087/user/omar/${email}`)
   }
   getusernamebyemail(email: string) {
     return this.http.get(`http://localhost:8087/user/trigui/${email}`, { responseType: 'text' })

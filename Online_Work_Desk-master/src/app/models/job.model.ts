@@ -2,15 +2,16 @@ import { Byte } from "@angular/compiler/src/util";
 
 export interface Job {
 
-  title: string,
-  description: string,
+  Title: string,
+  Description: string,
   startDate: Date,
   estimatedDuration: number,
-  price: number,
-  status: 'Free' | 'Busy' | 'Deleted',
-  industry: string,
+  Price: number,
+  Status: 'Free' | 'Busy' | 'Deleted',
+  Industry: string,
   jobImageUrl: string,
   owner: number,
-  applications: any[]
+  applications?: any[],
+  requiredSkills?: string[]
 
 }
