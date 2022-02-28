@@ -4,6 +4,7 @@ import { catchError, Observable } from 'rxjs';
 import { baseUrl } from '../shared/baseUrl';
 import { ProcessHTTPMsgServiceService } from './process-httpmsg-service.service';
 import { Job } from "../models/job.model";
+import { Application } from '../application.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -53,5 +54,7 @@ export class JobService {
     return this.http.get<Job[]>(this.url + `${userId}/jobsposted`)
       .pipe(catchError(this.processHttpMsgService.handleError));
   }
-
+  seeapplicationsforthisjob(jobId:number): Observable<Application[]> {
+    return this.http.get<Application[]>(this.url + `${jobId}/getapplicationsbyjob`)
+  }
 }

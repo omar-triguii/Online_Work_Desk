@@ -41,14 +41,14 @@
   </div>
 
   <!--job card group-->
-  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length">
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5" *ngIf="allJobs && allJobs.length" >
     <div *ngFor="let job of allJobs;let indexOfelement=index;" class="col">
       <div class="card h-100" style="width: 18rem">
-        <img [src]="allImages[indexOfelement]" class="card-img-top" alt="Card image cap " />
+        <img src="../assets/jobimage.jpg" class="card-img-top" alt="Card image cap " />
         <div class="card-body">
-          <h5 class="card-title">{{job.Title}}</h5>
-          <h4 class="card-title">{{job.Industry}}</h4>
-          <p class="card-text">{{job.Price}} $</p>
+          <h5 class="card-title">{{job.title}}</h5>
+          <h4 class="card-title">{{job.industry}}</h4>
+          <p class="card-text">{{job.price}} $</p>
           <div id="formFooter ">
             <input type="button" class="fourth" data-bs-toggle="modal" href="#exampleModalToggle"
               (click)="seeJobDetails(job)" value="Detail " />
@@ -72,10 +72,10 @@
             <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg " class="card-img-top"
               alt="... " />
             <div class="card-body">
-              <h5 class="card-title">{{currJob.Title}}</h5>
-              <h4 class="card-title">{{currJob.Industry}}</h4>
-              <p class="card-text">{{currJob.Price}} $</p>
-              <p class="card-text">{{currJob.Description}} </p>
+              <h5 class="card-title">{{currJob.title}}</h5>
+              <h4 class="card-title">{{currJob.industry}}</h4>
+              <p class="card-text">{{currJob.price}} $</p>
+              <p class="card-text">{{currJob.description}} </p>
               <p class="card-text">{{currJob.startDate}} </p>
               <p class="card-text">{{currJob.estimatedDuration}} </p>
               <p class="card-text">

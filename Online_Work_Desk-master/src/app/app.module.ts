@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FindUserComponent } from './find-user/find-user.component';
 import { OtherUserProfileComponent } from './other-user-profile/other-user-profile.component';
 import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.component';
+import { JobsPerUserComponent } from './jobs-per-user/jobs-per-user.component';
+import { ViewapplicationsforeachjobComponent } from './viewapplicationsforeachjob/viewapplicationsforeachjob.component';
+import { ViewsingleapplicationComponent } from './viewsingleapplication/viewsingleapplication.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { HomeafterloginComponent } from './homeafterlogin/homeafterlogin.compone
     WrongRouteComponentComponent,
 
     HomeafterloginComponent,
+    JobsPerUserComponent,
+    ViewapplicationsforeachjobComponent,
+    ViewsingleapplicationComponent,
 
     FindUserComponent,
     OtherUserProfileComponent,
