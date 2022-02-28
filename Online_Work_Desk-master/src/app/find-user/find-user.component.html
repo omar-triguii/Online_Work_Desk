@@ -1,30 +1,29 @@
 <div class="container">
-    <!--searsh-->
-    <div class="wrapper fadeInDown mt-5 pt-5">
-        <div id="formContent">
-            <div class="position-relative">
-                <input type="text" id="search" class="fadeIn fourth" name="searsh" placeholder="Searsh" />
-                <button class="add">
-          <img class="addbtn" src="../../assets/search (1).png" alt="" />
-        </button>
-            </div>
-        </div>
+  <!--searsh-->
+  <div class="wrapper fadeInDown mt-5 pt-5">
+    <div id="formContent">
+      <div class="position-relative">
+        <input type="text" id="search" class="fadeIn fourth form-control mr-sm-2 shadow-none" name="searsh"
+          placeholder="Searsh" #key="ngModel" ngModel required type="search" (ngModelChange)="searchUsers(key.value)"
+          [ngModelOptions]="{ standalone: true }" />
+      </div>
     </div>
-    <!--user card groupe-->
+  </div>
+  <!--user card groupe-->
 
-    <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5">
-        <div *ngFor="let user of users" class="col">
-            <div class="card h-100" style="width: 18rem">
-                <img src="../../assets/1.jpg" class="card-img-top" alt="Card image cap " />
-                <div class="card-body">
-                    <h5 class="card-title">FirstName</h5>
-                    <h4 class="card-title">LastName</h4>
-                    <p class="card-text">PhoneNumber</p>
-                    <div id="formFooter ">
-                        <input type="button" class="fourth" routerLink="/otherUserProfile" value="Show " />
-                    </div>
-                </div>
-            </div>
+  <div class="row row-cols-1 row-cols-md-4 g-4 mt-5 pt-5">
+    <div *ngFor="let user of users" class="col">
+      <div class="card h-100" style="width: 18rem">
+        <img src="../../assets/1.jpg" class="card-img-top" alt="Card image cap " />
+        <div class="card-body">
+          <h5 class="card-title">{{ user.firstName }}</h5>
+          <h4 class="card-title">{{ user.lastName }}</h4>
+          <p class="card-text">{{ user.phoneNumber }}</p>
+          <div id="formFooter ">
+            <input type="button" class="fourth" routerLink="/otherUserProfile" value="Show " />
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>

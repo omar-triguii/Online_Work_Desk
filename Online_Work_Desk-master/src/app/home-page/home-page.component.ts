@@ -17,35 +17,33 @@ export class HomePageComponent implements OnInit {
   constructor(private authService: AuthServiceService) {}
 
   ngOnInit(): void {
-
-    if(this.authService.loggedIn()) {
-      this.authService.getusernamebyemail(this.authService.getEmail()).subscribe({
-        next: (username: string) => {
-          this.userName = username;
-          let options = {
-            strings: this.userName.split(' '),
-            typeSpeed: 100,
-            backSpeed: 80,
-            showCursor: true,
-            cursorChar: '|',
-            loop: true,
-          };
-          let typed = new Typed('.auto-typed', options);
-        }
-      });
-    } else { let options = {
-      strings: ['To Khademni','To our website'],
-      typeSpeed: 100,
-      backSpeed: 80,
-      showCursor: true,
-      cursorChar: '|',
-      loop: true,
-    };
-    let typed = new Typed('.auto-typed', options);
-
-
-    };
-
-
+    if (this.authService.loggedIn()) {
+      this.authService
+        .getusernamebyemail(this.authService.getEmail())
+        .subscribe({
+          next: (username: string) => {
+            this.userName = username;
+            let options = {
+              strings: this.userName.split(' '),
+              typeSpeed: 100,
+              backSpeed: 80,
+              showCursor: true,
+              cursorChar: '|',
+              loop: true,
+            };
+            let typed = new Typed('.auto-typed', options);
+          },
+        });
+    } else {
+      let options = {
+        strings: ['To KHADAMNI', 'To our WEBSITE'],
+        typeSpeed: 100,
+        backSpeed: 80,
+        showCursor: true,
+        cursorChar: '|',
+        loop: true,
+      };
+      let typed = new Typed('.auto-typed', options);
+    }
   }
 }
