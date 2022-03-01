@@ -9,7 +9,7 @@ export interface User {
   password: string,
   phoneNumber: string,
   address: string,
-  profileImage?: Byte[],
+  profileImage?: string,
   rating: number,
   nbRatings: number,
   cvUrl: string,

@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import { globalComponenet } from '../global/global.component';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,6 +15,8 @@ export class NavBarComponent implements OnInit {
   email: any
   dataReceived: any
   islogedin: boolean | undefined
+  currUser: User = <User>{};
+  hasProfileImage: boolean = false;
   constructor(private asd: AuthServiceService, private router: Router) {
 
     this.islogedin = this.asd.loggedIn()
@@ -24,6 +27,12 @@ export class NavBarComponent implements OnInit {
     }
     else {
       this.email = this.asd.getEmail()
+      this.asd.getuserbyemail(this.email).subscribe((user: User) => {
+        this.currUser = user;
+        if(this.currUser.profileImage)
+          this.hasProfileImage = true
+        console.log(this.hasProfileImage)
+      });
       // this.asd.getadmin(this.username).subscribe(data =>
       //this.user=data
       //console.log(this.email)

@@ -46,7 +46,8 @@
         <div *ngIf="islogedin" class="dropdown">
           <button class="btn dropdown-toggle shadow-none" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../../assets/user.png" class="iconProfile" alt="" />
+            <img src="../../assets/user.png" class="iconProfile" alt="" *ngIf="!hasProfileImage" />
+            <img [src]="currUser.profileImage" class="iconProfile" alt="" *ngIf="hasProfileImage" />
           </button>
           <!-- dropdown  -->
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

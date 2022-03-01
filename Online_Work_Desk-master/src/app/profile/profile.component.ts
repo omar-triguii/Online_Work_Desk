@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import { User } from '../models/user.model';
+import { JobService } from '../services/job.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -12,9 +13,10 @@ import { UserService } from '../services/user.service';
 })
 export class ProfileComponent implements OnInit {
   email: any
-  userId: any
+  userId?: number
   dataReceived: any
   islogedin: boolean | undefined
+  fileName?: string;
   //
   //url; //Angular 8
   url: any; //Angular 11, for stricter type
@@ -42,10 +44,25 @@ export class ProfileComponent implements OnInit {
       this.url = reader.result;
 
     }
+
+    const file: File = event.target.files[0];
+
+    if (file) {
+
+      this.fileName = file.name;
+
+      this.jobService.uploadImage(file).subscribe({
+        next: (response: any) => console.log(response)
+      });
+
+      //const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+      //upload$.subscribe();
+  }
   }
 
   //
-  constructor(private asd: AuthServiceService, private aux: UserService, private router: Router) {
+  constructor(private asd: AuthServiceService, private aux: UserService, private router: Router, private jobService: JobService) {
 
     this.islogedin = this.asd.loggedIn()
     console.log(this.islogedin + "test")
@@ -71,20 +88,27 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.asd.getuserbyemail(this.asd.getEmail()).subscribe({
+      next: (user: User) => this.userId = user.userId
+    });
+
   }
   updateUser(f: any) {
     let data = f.value
-    console.log(data);
     let user: User = <User>{};
     user.address = data.address;
     user.birthDate = data.birthDate;
-    user.password = data.password;
-    /* this.userId = this.dataReceived.userId
-    console.log(this.userId)
-    this.aux.update(this.userId, data).subscribe((response) => {
-      console.log(response)
-      this.router.navigate(['home'])
-    }, err => console.log(err)) */
+    if(data.password)
+      user.password = data.password;
+    user.firstName = this.dataReceived.firstName;
+    user.lastName = this.dataReceived.lastName;
+    user.phoneNumber = this.dataReceived.phoneNumber;
+    if(this.fileName)
+      user.profileImage = `http://localhost:8087/files/${this.fileName}`;
+    this.aux.update(this.userId, user).subscribe((response) => {
+      console.log(response);
+      this.router.navigate(['/FindJob']);
+    });
   }
 
 }

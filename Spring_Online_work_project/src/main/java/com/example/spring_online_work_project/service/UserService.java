@@ -109,6 +109,9 @@ public class UserService {
         prd.get().setLastName(prd1.getLastName());
         prd.get().setPhoneNumber(prd1.getPhoneNumber());
         prd.get().setAddress(prd1.getAddress());
+        prd.get().setProfileImage(prd1.getProfileImage());
+        //prd.get().setPassword(prd1.getPassword());
+        prd.get().setBirthdate(prd1.getBirthdate());
         UserEntity user = userRepo.save(prd.get());
         return mapEntityToDto(user);
     }

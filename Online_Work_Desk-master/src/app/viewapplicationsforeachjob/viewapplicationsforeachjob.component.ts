@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Application } from '../application.model';
 import { InterService } from '../inter.service';
 import { JobsPerUserComponent } from '../jobs-per-user/jobs-per-user.component';
 import { Job } from '../models/job.model';
+import { ApplicationService } from '../services/application.service';
 import { JobService } from '../services/job.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class ViewapplicationsforeachjobComponent implements OnInit {
   jobId?: number;
   constructor(
     private jobService: JobService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private applicationService: ApplicationService,
+    private router: Router
   ) {
     this.jobId = +(this.route.snapshot.paramMap.get('jobId') ?? 0);
     console.log(this.jobId);
@@ -27,6 +30,14 @@ export class ViewapplicationsforeachjobComponent implements OnInit {
       next: (applications: Application[]) => {
         this.allApplications = applications
       }
+    });
+  }
+
+  confirmApplication(appId: number) {
+    this.applicationService.confirmApplication(appId).subscribe((response) => {
+      this.router.navigate(['/FindJob'])
+    }, (err) => {
+      this.router.navigate(['/FindJob'])
     });
   }
 }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 @Service
 public class ApplicationService {
     @Autowired
@@ -67,5 +69,30 @@ public class ApplicationService {
             }
         }
         return result;
+    }
+
+    @Autowired
+    private EmailSenderService service;
+
+    // @EventListener(ApplicationReadyEvent.class)
+    public Application confirmApplication(Long applicationId) throws MessagingException {
+        Application application = this.applicationRepo.getById(applicationId);
+        String email=application.getApplicationOwner().getEmail();
+        String body=application.getDescription();
+        String emailOwner=application.getJob().getOwner().getEmail();
+        String subject="Job request accepted for" +application.getJob().getTitle();
+        triggerMail(email, body, subject, emailOwner);
+        return application;
+    }
+
+    public void triggerMail(String email, String body, String subject, String cc) throws MessagingException {
+
+        service.sendSimpleEmail(email,
+                body,
+                subject,
+                cc
+        // emailOwner
+        );
+
     }
 }

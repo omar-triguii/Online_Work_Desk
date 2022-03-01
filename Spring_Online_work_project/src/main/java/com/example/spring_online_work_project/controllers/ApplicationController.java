@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("user")
@@ -43,6 +45,11 @@ public class ApplicationController {
     @GetMapping("/{jobId}/getapplicationsbyjob")
     public List<Application> getapplicationsbyjob(@PathVariable Long jobId) {
         return this.applicationService.getapplicationsbyjob(jobId);
+    }
+
+    @GetMapping("/{applicationId}/confirm")
+    public Application confirmApplication(@PathVariable Long applicationId) throws MessagingException {
+        return this.applicationService.confirmApplication(applicationId);
     }
 
 }

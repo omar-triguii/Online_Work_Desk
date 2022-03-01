@@ -38,4 +38,8 @@ export class ApplicationService {
   getApplicationByID(jobId:number,applicationId:number){
     return this.http.get<Application>(this.url + `${jobId}/${applicationId}/viewapplication`)
   }
+
+  confirmApplication(appId: number) {
+    return this.http.get(this.url + `${appId}/confirm`);
+  }
 }
