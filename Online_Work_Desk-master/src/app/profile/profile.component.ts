@@ -107,7 +107,9 @@ export class ProfileComponent implements OnInit {
       user.profileImage = `http://localhost:8087/files/${this.fileName}`;
     this.aux.update(this.userId, user).subscribe((response) => {
       console.log(response);
-      this.router.navigate(['/FindJob']);
+      this.router.navigate(['/FindJob']).then(() => {
+        window.location.reload();
+      });
     });
   }
 
