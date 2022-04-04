@@ -1,0 +1,28 @@
+version: "3"
+services:
+  supcom-bd-mysql:
+    image: mysql:8.0
+    networks:
+      - employee-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=webprojectsupcom
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+
+  supcom-choukair:
+    image: supcom-choukair:latest
+    networks:
+      - employee-mysql
+    ports:
+      - 8088:8088
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - supcom-bd-mysql
+
+networks:
+  employee-mysql:

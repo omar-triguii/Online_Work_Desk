@@ -18,7 +18,7 @@ import java.util.Collection;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class TestSecurityController {
     @Autowired
     private UserService userService;

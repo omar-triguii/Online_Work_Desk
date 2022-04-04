@@ -81,7 +81,7 @@ public class ApplicationService {
         String body=application.getDescription();
         String emailOwner=application.getJob().getOwner().getEmail();
         String subject="Job request accepted for" +application.getJob().getTitle();
-        triggerMail(email, body, subject, emailOwner);
+        triggerMail("omar.trigui@supcom.tn", "body", "subject", "omartrigui1234@gmail.com");
         return application;
     }
 

@@ -2,6 +2,7 @@ package com.example.spring_online_work_project.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 import javax.persistence.*;
 
 @Entity
