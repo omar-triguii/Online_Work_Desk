@@ -5,8 +5,8 @@ services:
     networks:
       - employee-mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=webprojectsupcom
+      - MYSQL_ROOT_PASSWORD=****
+      - MYSQL_DATABASE=****
       - MYSQL_PASSWORD=root
     ports:
       - 3306:3306
